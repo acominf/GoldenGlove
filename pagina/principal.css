@@ -1,0 +1,87 @@
+body
+{
+    background-color: black;
+}
+
+
+.navbar
+{
+    margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-default .navbar-nav > li > a:focus {
+color: #c1c2c6;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+     color: #c1c2c6; /*BACKGROUND color for active*/
+     background-color: #c0924f;
+}
+
+.navbar-default {
+    background-color: black;
+    border-color: #c0924f; /*Color dorado*/
+}
+
+
+.navbar .navbar-nav > li.open > a:hover,
+.navbar .navbar-nav > li.open > a:focus {
+  background-color: #c0924f;
+  color :#c1c2c6;
+}
+
+.dropdown-menu
+{
+    background-color: black; /*color del fondo de la lista del submenú*/
+    border-color: #c0924f;
+    
+}
+
+.dropdown-menu > li > a
+{
+    color: #c0924f;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #c0924f;  /*change color of links in drop down here*/
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+}
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #c0924f; /*Change active text color here*/
+}
+
+
+.fondoLogo
+{
+    background-image: url(imagenes/fondoLogo.jpg);
+}
+
+.logo
+{
+    height: 152px;
+    width: 153px;
+    margin: 0 auto;
+    background-image: url("imagenes/logo152.png");
+}
+
+.nombre{
+    color: #c0924f;
+}
+
+p{
+    color: 	#c1c2c6;
+}
+
