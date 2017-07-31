@@ -3,6 +3,9 @@ body
     background-color: black;
 }
 
+.cuerpo{
+    margin-top: 25px;
+}
 
 .navbar
 {
@@ -25,7 +28,6 @@ color: #c1c2c6;  /*Sets the text hover color on navbar*/
     background-color: black;
     border-color: #c0924f; /*Color dorado*/
 }
-
 
 .navbar .navbar-nav > li.open > a:hover,
 .navbar .navbar-nav > li.open > a:focus {
@@ -63,18 +65,21 @@ color: #c1c2c6;  /*Sets the text hover color on navbar*/
     color: #c0924f; /*Change active text color here*/
 }
 
-
 .fondoLogo
 {
-    background-image: url(imagenes/fondoLogo.jpg);
+    background-image: url(../imagenes/fondoLogo.jpg);
+    height: 100px;
+    margin-top: 25px;
 }
 
 .logo
 {
+    position: relative;
+    top: -25px;
     height: 152px;
     width: 153px;
     margin: 0 auto;
-    background-image: url("imagenes/logo152.png");
+    background-image: url("../imagenes/logo152.png");
 }
 
 .nombre{
@@ -85,3 +90,6 @@ p{
     color: 	#c1c2c6;
 }
 
+.aside {
+    margin-top:25px;
+}
