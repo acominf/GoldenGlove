@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- CÓDIGO DE BOOTSTRAP -->
+		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
+		<!-- CÓDIGO DE BOOTSTRAP -->
+		<link rel="stylesheet" href="css/bootstrap.min.css"> 
+		<link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/formulario.css">
+        <title>Subir contenido</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                        <span class="icon-bar">
+                        </span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">
+                                Inicio 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="nosotros.html">
+                                Nosotros
+                            </a>
+                        </li>
+                        <li>
+                            <a href="entrenamiento.html">
+                                Entrenamientos
+                            </a>
+                        </li>
+                        <li >
+                            <a href="galeria.html">
+                                Galería
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                Iniciar Sesión
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Usuario 
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        Perfil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Salir
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="fondoLogo">
+            <div class="logo">
+                <!--img src="imagenes/logo152.png"/-->
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-offset-1">
+                <h1>Agregar contenido</h1>
+            </div>
+            <form class ="form-horizontal" method="post" action="/php/pagina/agregaContenido.php">
+                <div class="form-group ">
+                    <label class="control-label col-md-1" for="titulo">Titulo:</label>
+                    <div class="col-md-11">
+                        <input class="form-control" id="titulo" type="text" placeholder="Titulo de la entrada:">
+                    </div>
+                </div>
+                <div class="form-group has-error">
+                    <label class="control-label col-md-1" for="contenido">Contenido:</label>
+                    <div class="col-md-11">
+                        <textarea class="form-control" rows="10" id="contenido" placeholder="Escribe la entrada"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-6">
+                        <button class="btn btn-success" type="submit">Agregar</button>
+                    </div>
+                </div>
+            </form>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+            <script src="js/jquery.js"></script><!-- CÓDIGO DE BOOTSTRAP -->
+            <script src="js/bootstrap.min.js"></script> <!-- CÓDIGO DE BOOTSTRAP -->
+        </div>
+    </body>
+</html>
