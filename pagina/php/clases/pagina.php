@@ -8,6 +8,10 @@ class Pagina{
 	private $nombre;
 	private $contenidos;
 	
+	public function __contructor2($nombrePag){
+		$this->consultaPagina($nombrePag);
+	}
+	
 	public function consultaPagina($pagina){
 		$res = null;
 		
@@ -53,7 +57,7 @@ class Pagina{
 		$db = null;
 	}
 	
-	public function agregaContenido($titulo,$contenido,$orden){
+	public function agregaCon($titulo,$contenido,$orden){
 		
 		$db = new Database();
 		$id = 0;
@@ -61,10 +65,11 @@ class Pagina{
 		if($db->conectado){
 			if(!empty($this->paginaId)){
 				$db->insertaContenido($contForm,$titulo,$this->paginaId,$orden);
-				$this->consultaContenido();
+				//$this->consultaContenido();
 			}
 		}
 		$db = null;
+		
 	}
 	
 	public function getPaginaId(){

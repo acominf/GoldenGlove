@@ -69,14 +69,10 @@ class Database{
 	
 	public function insertaContenido($cont,$titulo,$paginaId,$orden){
 		$ins = null;
-		$idInsertado = 0;
-		
 		
 		if($this->conectado){
 			if($ins = $this->cnn->prepare('INSERT INTO contenidos(contenido,titulo,paginaId,orden) VALUES(?,?,?,?);')){
-				echo 'INSERTANDO... ' . $cont . ' ' . $titulo . ' ' . $paginaId . ' ' . $orden;
 				$ins->bind_param('ssii',$cont,$titulo,$paginaId,$orden);
-				echo $idInsertado;
 				$ins->execute();
 				$ins->close();
 			}

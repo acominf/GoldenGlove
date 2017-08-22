@@ -89,17 +89,17 @@
             <div class="col-md-offset-1">
                 <h1>Agregar contenido</h1>
             </div>
-            <form class ="form-horizontal" method="post" action="/php/pagina/agregaContenido.php">
+            <form class ="form-horizontal" method="POST" action="php/pagina/agregaContenido.php">
                 <div class="form-group ">
                     <label class="control-label col-md-1" for="titulo">Titulo:</label>
                     <div class="col-md-11">
-                        <input class="form-control" id="titulo" type="text" placeholder="Titulo de la entrada:">
+                        <input class="form-control" name="titulo" type="text" placeholder="Titulo de la entrada:">
                     </div>
                 </div>
                 <div class="form-group has-error">
                     <label class="control-label col-md-1" for="contenido">Contenido:</label>
                     <div class="col-md-11">
-                        <textarea class="form-control" rows="10" id="contenido" placeholder="Escribe la entrada"></textarea>
+                        <textarea class="form-control" rows="10" name="contenido" placeholder="Escribe la entrada"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
