@@ -21,7 +21,7 @@ if($valido){
 	$server = new soap_server();
 	$server->configureWSDL("prueba", $namespace);
 	
-	$server->register('servicio.prueba',
+	$server->register('prueba',
 			array('categoria' => 'xsd:string'),
 			array('return' => 'xsd:string'),
 			$namespace,
@@ -30,7 +30,7 @@ if($valido){
 			'encoded',
 			'hace una prueba de funcionamiento');
 
-	$server->register('servicio.agregaContenido',
+	$server->register('agregaContenido',
 			array('nombrePag' => 'xsd:string',
 					'titulo' => 'xsd:string',
 					'contenido' => 'xsd:string',
@@ -47,30 +47,28 @@ if($valido){
 			
 			
 }
-class servicio{
 
-	function prueba($categoria){
-		$ret = 'jja';
-		
-		if($categoria == 'prueba'){
-			$ret = 'hola culero';
-		}
-		else{
-			$ret = 'adios';
-		}
-		
-		return $ret;
+function prueba($categoria){
+	$ret = 'jja';
+	
+	if($categoria == 'prueba'){
+		$ret = 'Esta es una prueba existosa';
+	}
+	else{
+		$ret = 'No pertenece a una categoria prueba';
 	}
 	
-	function agregaContenido($nombrePag,$titulo,$contenido,$posicion){
-		$pag = new Pagina();
+	return $ret;
+}
 
-		$pag->consultaPagina($nombrePag);
+function agregaContenido($nombrePag,$titulo,$contenido,$posicion){
+	$pag = new Pagina();
+
+	$pag->consultaPagina($nombrePag);
+
+	$pag->agregaCon($titulo,$contenido,$posicion);
 	
-		$pag->agregaCon($titulo,$contenido,$posicion);
-		
-		return $pag->getPaginaId();
-	}
+	return $pag->getPaginaId();
 }
 /*
 class servicios{

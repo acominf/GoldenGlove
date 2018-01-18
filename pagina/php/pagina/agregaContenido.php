@@ -2,8 +2,8 @@
 require_once '/../nusoap/nusoap.php';
 
 $httpServer='localhost';
-$dirWSAdmin='/goldenGlove/';
-$namespace='http://'.$httpServer.'/'.$dirWSAdmin.'/GoldenGlove/pagina/php/servicios/servicios.php';
+$dirWSAdmin='/goldenGlove/';//'
+$namespace='http://localhost:8080/goldenglove/GoldenGlove/pagina/php/servicios/servicios.php';
 
 if($_POST['titulo'] == null && $_POST['contenido'] == null ){
 	//header('location:index.html');
@@ -20,8 +20,9 @@ else {
 	}
 	$par = array('nombrePag'=>'index','titulo' =>$titulo,'contenido'=>$contenido,'posicion'=>15);
 	
-	$cliente->servicioagregaContenido('index',$titulo,$contenido,15);
-	//$res = $cliente->call('servicioagregaContenido',$par);
+	echo $par['nombrePag'] . ' ' . $par['titulo']. ' ' . $par['contenido']. ' ' . $par['posicion'] ;
+	//$cliente->agregaContenido('index',$titulo,$contenido,15);
+	$res = $cliente->call('agregaContenido',$par);
 	
 	echo $res;
 }
