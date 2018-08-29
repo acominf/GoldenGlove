@@ -13,7 +13,7 @@
 	<body>
         <?php
             $paginaId = 1;
-            $cantContenidosXpag = 6;
+            $cantContenidosXpag = 3;
             $pagina = '';
             if(isset($_GET["pagina"])){
                 $pagina = $_GET["pagina"];

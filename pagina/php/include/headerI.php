@@ -19,33 +19,33 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html">
+                    <li class= "<?php echo $paginaId == 1 ? 'active' : ''; ?> ">
+                        <a href="index.php">
                             Inicio 
                             <span class="sr-only">
                                 (current)
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <li class= "<?php echo $paginaId == 2 ? 'active' : ''; ?> ">
                         <a href="nosotros.html">
                             Nosotros
                         </a>
                     </li>
-                    <li >
+                    <li class= "<?php echo $paginaId == 3 ? 'active' : ''; ?> ">
                         <a href="entrenamiento.html">
                              Entrenamientos
                         </a>
                     </li>
-                    <li >
-                        <a href="galeria.html">
+                    <li class= "<?php echo $paginaId == 4 ? 'active' : ''; ?> ">
+                        <a href="galeria.php">
                              Galería
                         </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="login.html">
+                        <a href="login.php">
                             Iniciar Sesión
                         </a>
                     </li>
@@ -73,9 +73,11 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="fondoLogo">
+        <a href="index.php">
         <div class="logo">
             <!--img src="imagenes/logo152.png"/-->
         </div>
+        </a>
     </div>
     <h1 class="nombre text-center">
         <strong>GOLDEN GLOVE</strong>
