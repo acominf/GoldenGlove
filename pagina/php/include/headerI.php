@@ -1,68 +1,66 @@
+<?php
+    session_start();
+    $usuario;
+    if(isset($_SESSION['usuario'])){
+        $usuario = $_SESSION['usuario'];
+    }
+?>
 
 <header>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">
-                        Toggle navigation
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                </button>
-            </div>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#botonColapsa" aria-expanded="false" aria-controls="botonColapsa" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                </span>
+            </button>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class= "<?php echo $paginaId == 1 ? 'active' : ''; ?> ">
-                        <a href="index.php">
-                            Inicio 
+            <div class="collapse navbar-collapse pruebaNav" id="botonColapsa">
+                <ul class="nav navbar-nav  mr-auto">
+                    <li class= "nav-item <?php echo $paginaId == 1 ? 'active' : ''; ?> ">
+                        <a class="nav-link" href="index.php">
+                            Inicio
                             <span class="sr-only">
                                 (current)
                             </span>
                         </a>
                     </li>
-                    <li class= "<?php echo $paginaId == 2 ? 'active' : ''; ?> ">
-                        <a href="nosotros.html">
+                    <li class= "nav-item <?php echo $paginaId == 2 ? 'active' : ''; ?> ">
+                        <a class="nav-link" href="nosotros.html">
                             Nosotros
                         </a>
                     </li>
-                    <li class= "<?php echo $paginaId == 3 ? 'active' : ''; ?> ">
-                        <a href="entrenamiento.html">
+                    <li class= "nav-item <?php echo $paginaId == 3 ? 'active' : ''; ?> ">
+                        <a class="nav-link" href="entrenamiento.html">
                              Entrenamientos
                         </a>
                     </li>
-                    <li class= "<?php echo $paginaId == 4 ? 'active' : ''; ?> ">
-                        <a href="galeria.php">
+                    <li class= "nav-item <?php echo $paginaId == 4 ? 'active' : ''; ?> ">
+                        <a class="nav-link" href="galeria.php">
                              Galería
                         </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="login.php">
+                    <li class="<?php echo $usuario == null ? '' : 'invisible' ?> ">
+                        <a class="nav-link" href="login.php">
                             Iniciar Sesión
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Usuario 
+                    <li class="nav-item dropdown <?php echo $usuario == null ? 'invisible' : '' ?> ">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <?php echo isset($usuario) == null ? '' : $usuario->getUsuario(); ?>
                             <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="#">
                                     Perfil
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="#">
                                     Salir
                                 </a>
                             </li>

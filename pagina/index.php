@@ -3,10 +3,12 @@
 	<head>
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- CÓDIGO DE BOOTSTRAP -->
+		<!-- CÓDIGO DE BOOTSTRAP 
 		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
-		<!-- CÓDIGO DE BOOTSTRAP -->
-		<link rel="stylesheet" href="css/bootstrap.min.css"> 
+        -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+		<!-- CÓDIGO DE BOOTSTRAP --> 
+        <link rel="stylesheet" href="css/bootstrap.css"> 
 		<link rel="stylesheet" href="css/general.css">
 		<title>Golden Glove</title>
 	</head>
@@ -36,6 +38,7 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
 		<?php 
+            include('php\clases\usuario.php');/* agrega la clase usuario*/
             include('php\include\headerI.php');/* agrega el menu*/
             include_once("/php/config.php"); /*agrega los datos de configuración*/
 
@@ -66,7 +69,7 @@
         ?>
         <div class="container-fluid cuerpo">
             <section class="row">
-                <aside class="hidden-xs hidden-sm col-md-2 col-lg-2 aside">
+                <aside class="d-none d-md-block col-md-2 col-lg-2 aside">
                     <nav>
                     <?php
                         $start = ($pagina-1) * $cantContenidosXpag;
@@ -81,7 +84,7 @@
                         }
                     while ($res->fetch()){ ?>
                             <h2> 
-                                <a href = "#E<?php echo $contenidoId ?> "> 
+                                <a class="" href = "#E<?php echo $contenidoId ?> "> 
                                     <?php echo $titulo ?> 
                                 </a>
                             </h2>
@@ -134,7 +137,7 @@
                         </nav>
                     <!-- </div> -->
                 </div>
-                <aside class=" hidden-xs col-sm-5 col-md-3 col-lg-3">
+                <aside class=" d-none d-sm-block col-sm-5 col-md-3 col-lg-3">
                     <div class="fb-page" 
                         data-tabs="timeline,events,messages"
                         data-href="https://www.facebook.com/goldengloveboxingclub"
@@ -147,5 +150,6 @@
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<script src="js/jquery.js"></script><!-- CÓDIGO DE BOOTSTRAP -->
 		<script src="js/bootstrap.min.js"></script> <!-- CÓDIGO DE BOOTSTRAP -->
+        <script src="js/popper.min.js"></script>
 	</body>
 </html>

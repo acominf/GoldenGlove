@@ -1,5 +1,4 @@
-body
-{
+body{
     background-color: black;
 }
 
@@ -7,64 +6,70 @@ body
     margin-top: 25px;
 }
 
-.navbar
-{
+.navbar{
     margin-bottom: 0px;
+    border-bottom: 1px solid #c0924f;
 }
 
-.navbar-default .navbar-nav > li > a:hover, 
-.navbar-default .navbar-nav > li > a:focus {
-color: #c1c2c6;  /*Sets the text hover color on navbar*/
+.pruebaNav .navbar-nav > li > a:hover, 
+.pruebaNav .navbar-nav > li > a:focus {
+color: #c1c2c6 !important;   /*Sets the text hover color on navbar*/
 }
 
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active >   
- a:hover, .navbar-default .navbar-nav > .active > a:focus {
-     color: #c1c2c6; /*BACKGROUND color for active*/
-     background-color: #c0924f;
+.pruebaNav .navbar-nav > .active > a,
+.pruebaNav .navbar-nav > .active >   
+ a:hover, .pruebaNav .navbar-nav > .active > a:focus {
+     color: #c1c2c6 !important;  /*BACKGROUND color for active*/
+     background-color: #c0924f !important;
 }
 
-.navbar-default {
-    background-color: black;
-    border-color: #c0924f; /*Color dorado*/
+.pruebaNav .navbar-nav > li > a {
+    color: #c0924f !important; /*Change active text color here*/
 }
 
+.pruebaNav {
+    border-color: #c0924f !important; /*Color dorado*/
+}
+
+/*Para cuando el dropdown de la barra de navegación tiene el foco o el cursor se encuetra sobre él*/
 .navbar .navbar-nav > li.open > a:hover,
 .navbar .navbar-nav > li.open > a:focus {
-  background-color: #c0924f;
-  color :#c1c2c6;
+  background-color: #c0924f !important;
+  color :#c1c2c6 !important;
 }
 
+/*Para el menu del dropdown que se encuentra en la barra de navegación*/
 .dropdown-menu
 {
     background-color: black; /*color del fondo de la lista del submenú*/
-    border-color: #c0924f;
-    
+    border-color: #c0924f; 
 }
 
-.dropdown-menu > li > a
+.dropdown-divider{
+    
+ border-top: 1px solid #c0924f;
+}
+
+/*Color del texto del dropdown que se encuentra en la barra de navegación*/
+.dropdown-menu 
 {
     color: #c0924f;
 }
 
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
+.dropdown-menu :hover,
+.dropdown-menu :focus {
     color: white;
     text-decoration: none;
-    background-color: #c0924f;  /*change color of links in drop down here*/
+    background-color: #c0924f !important;  /*change color of links in drop down here*/
 }
 
 .nav > li > a:hover,
 .nav > li > a:focus {
     text-decoration: none;
-    background-color: silver; /*Change rollover cell color here*/
+    /*background-color: silver;*/ /*Change rollover cell color here*/
 }
 
-
-.navbar-default .navbar-nav > li > a {
-    color: #c0924f; /*Change active text color here*/
-}
-
+/* Para el logo que se encuentra debajo de la barra de navegación */
 .fondoLogo
 {
     background-image: url(../imagenes/fondoLogo.jpg);
@@ -84,6 +89,7 @@ color: #c1c2c6;  /*Sets the text hover color on navbar*/
 
 .nombre{
     color: #c0924f;
+    margin-top: 25px;
 }
 
 p{
@@ -92,4 +98,8 @@ p{
 
 .aside {
     margin-top:25px;
+}
+
+.asideTitle{
+    color: #c0924f;
 }

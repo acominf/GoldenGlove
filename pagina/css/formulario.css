@@ -7,3 +7,7 @@ label
 {
     color: #c0924f;
 }
+
+.vistaPrevia{
+    display: none;
+}
