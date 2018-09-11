@@ -11,3 +11,17 @@ label
 .vistaPrevia{
     display: none;
 }
+
+.card{
+    border-color: #c0924f !important;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.card-header{
+    background-color:#c0924f !important;
+    color: #c1c2c6 !important;
+}
+
+.card-body{
+    background-color: black !important;
+}
