@@ -1,6 +1,8 @@
-body{
+body {
     background-color: black;
 }
+
+
 
 .cuerpo{
     margin-top: 25px;
@@ -23,7 +25,7 @@ color: #c1c2c6 !important;   /*Sets the text hover color on navbar*/
      background-color: #c0924f !important;
 }
 
-.pruebaNav .navbar-nav > li > a {
+.h2 .pruebaNav .navbar-nav > li > a {
     color: #c0924f !important; /*Change active text color here*/
 }
 

@@ -10,38 +10,36 @@
 		<!-- CÓDIGO DE BOOTSTRAP --> 
         <link rel="stylesheet" href="css/bootstrap.css"> 
 		<link rel="stylesheet" href="css/general.css">
+        <script src="js/funciones.js"></script>
 		<title>Golden Glove</title>
 	</head>
 	<body>
-        <?php
+      <?php
+            include('php\clases\Pagina.php');
+            include('php\clases\Usuario.php');/* agrega la clase usuario*/
+            include_once("/php/config.php"); /*agrega los datos de configuración*/
+            include_once('formContenido.php');
+            session_start();
+            $usuario;
             $paginaId = 1;
-            $cantContenidosXpag = 3;
-            $pagina = '';
-            if(isset($_GET["pagina"])){
-                $pagina = $_GET["pagina"];
+            $pagina = new Pagina($paginaId);
+            if(isset($_SESSION['usuario'])){
+                $usuario = $_SESSION['usuario'];
+            if(isset($_SESSION['pagina']))
+                unset($_SESSION['pagina']);
+            }
+            $_SESSION['pagina'] = $pagina;
+            $cantContenidosXpag = 5;
+            $cantPag = ceil(count($pagina->getContenidos()) / $cantContenidosXpag);
+            if(isset($_GET["numPag"])){
+                $numPag = $_GET["numPag"];
             }
             else{
-                $pagina = 1;
-                header('location:index.php?pagina=1');
+                $pagina = 1;//numero de pagina del navegador de los articulos
+                header('location:index.php?numPag=1');
             }
-        ?>
-        <div id="fb-root">
-        </div>
-        <script>
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) 
-                    return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=764073483692061&autoLogAppEvents=1';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-		<?php 
-            include('php\clases\usuario.php');/* agrega la clase usuario*/
             include('php\include\headerI.php');/* agrega el menu*/
-            include_once("/php/config.php"); /*agrega los datos de configuración*/
-
+            /*
             mysqli_report(MYSQLI_REPORT_STRICT);//Permite arrojar excepciones personalizadas
             try{
                 $cnn = new mysqli(SRVDR,USR,PASS,DB);
@@ -65,14 +63,32 @@
             catch(exception $ex){
                 echo $ex->message;
             }
-            $numPag = ceil($numContenidos / $cantContenidosXpag);
+            $cantPag = ceil($numContenidos / $cantContenidosXpag);
+            */
         ?>
         <div class="container-fluid cuerpo">
+           <div class="row">
+               <button type="button" class="btn btn-primary <?php echo $usuario != null and $usuario->esAdmin() == 1 ? '': 'invisible'; ?>" data-toggle="modal" data-target="#modalAgregaContenido" onclick="agregaCont()">
+                  Agrega contenido
+                </button>
+           </div>
             <section class="row">
                 <aside class="d-none d-md-block col-md-2 col-lg-2 aside">
                     <nav>
                     <?php
-                        $start = ($pagina-1) * $cantContenidosXpag;
+                         $i = ($numPag-1) * $cantContenidosXpag;
+                        for($it = 0; $it < $cantContenidosXpag && $i < count($pagina->getContenidos()) ; $it++){ ?>
+                            <h2> 
+                                <a  href = "#E<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?> "> 
+                                    <?php echo $pagina->getContenidos()[$i]->getTitulo() ?> 
+                                </a>
+                            </h2>
+                            <?php $i++; ?> 
+                        <?php } ?>
+                        
+                        <?php
+                        /*
+                        $start = ($numPag-1) * $cantContenidosXpag;
                         if($res = $cnn->prepare('SELECT contenidoId,contenido,titulo FROM contenidos WHERE paginaId = ? ORDER BY orden DESC LIMIT ? , ?')){
                             $res->bind_param('iii',$paginaId,$start,$cantContenidosXpag);
                             $res->execute();
@@ -81,38 +97,61 @@
                         }
                         else {
                             echo 'error en la consulta';
-                        }
-                    while ($res->fetch()){ ?>
+                        }*/ ?>
+                    <?php /*while ($res->fetch()){ ?>
                             <h2> 
                                 <a class="" href = "#E<?php echo $contenidoId ?> "> 
                                     <?php echo $titulo ?> 
                                 </a>
                             </h2>
                     <?php    } ?>
+                    */?>
                     </nav>
                 </aside>
                 <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
-                    <?php
+                    <?php 
+                        $i = ($numPag-1) * $cantContenidosXpag;
+                        for($it = 0; $it < $cantContenidosXpag && $i < count($pagina->getContenidos()) ; $it++){ ?>
+                            <div class="row" id="E<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>">
+                                <h2 class="col-11">
+                                    <?php echo $pagina->getContenidos()[$i]->getTitulo() ?>  
+                                </h2>
+                                <button class="btn btn-secondary btn-sm col-1" type="button" onclick="actualizaCont(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
+                                    actu
+                                </button>
+                                <p> 
+                                    <?php  echo nl2br($pagina->getContenidos()[$i]->getContenido()) ?> 
+                                </p>
+                            </div>
+                        <?php 
+                            $i++; 
+                        } ?>
+                    <!--
+                   <?php/*
                         $res->data_seek(0);
-                        while ($res->fetch()) { ?>
-                            <h2 id="E<?php echo $contenidoId ?>"> <?php echo $titulo ?> </h2>
-                            <p> <?php echo $contenido ?> </p>
-                    <?php    }
+                        while ($res->fetch()) { */?>
+                           <div class="row">
+                            <h2 class="col-11" id="E<?php/* echo $contenidoId */?>"> <?php/* echo $titulo */?>  </h2>
+                            <button class="btn btn-secondary btn-sm col-1" type="button" onclick="actualizaCont()">actu</button>
+                            <p> <?php /* echo $contenido */?> </p>
+                            </div>
+                    <?php /*   }
                         $res->free_result();
                         $res->close();
-                    ?>
+                        
+                    */?>  -->
                    <!--< <div > -->
                         <nav aria-label="..." style="text-align: center">
                             <ul class="pagination">
-                                <li class="page-item <?php echo $pagina <= 1 ? 'disabled' : '' ?>">
-                                    <a class="page-link" tabindex="-1" href="index.php?pagina=<?php echo $pagina - 1; ?>">
+                                <li class="page-item <?php echo $numPag <= 1 ? 'disabled' : '' ?>">
+                                    <a class="page-link" tabindex="-1" href="index.php?numPag=<?php echo $numPag - 1; ?>">
                                         Anterior<!--&laquo;-->
                                     </a>
                                 </li>
                                 <?php
-                                    for($i=1;$i<= $numPag;$i++){ ?>
-                                        <li class = "page-item <?php echo $pagina==$i ? 'active' : '' ?>">
-                                            <a class="page-link" href="index.php?pagina=<?php echo $i ?> ">
+                                    for($i=1;$i<= $cantPag;$i++){ ?>
+                                        <li class = "page-item <?php echo $numPag==$i ? 'active' : '' ?>">
+                                            <a class="page-link" href="index.php?numPag=<?php echo $i ?> ">
                                                 <?php echo $i ?>
                                             </a>
                                         </li>
@@ -128,8 +167,8 @@
                                     </a>
                                 </li>
                               -->
-                                <li class="page-item <?php echo $pagina>=$numPag ? 'disabled' : '' ?>">
-                                    <a class="page-link" tabindex="-1" href="index.php?pagina=<?php echo $pagina + 1; ?>">
+                                <li class="page-item <?php echo $numPag>=$cantPag ? 'disabled' : '' ?>">
+                                    <a class="page-link" tabindex="-1" href="index.php?numPag=<?php echo $numPag + 1; ?>">
                                         Siguiente<!--&raquo; -->
                                     </a>
                                 </li>
@@ -147,6 +186,18 @@
                 </aside>
             </section>
         </div>
+        <div id="fb-root">
+        </div>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) 
+                    return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=764073483692061&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<script src="js/jquery.js"></script><!-- CÓDIGO DE BOOTSTRAP -->
 		<script src="js/bootstrap.min.js"></script> <!-- CÓDIGO DE BOOTSTRAP -->

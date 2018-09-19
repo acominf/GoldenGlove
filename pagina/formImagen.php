@@ -14,7 +14,10 @@
         <title>Subir imagen</title>
     </head>
     <body>
-        <?php include('php/include/headerI.php') ?>
+        <?php
+            include('php\clases\usuario.php');/* agrega la clase usuario*/
+            include('php/include/headerI.php') 
+        ?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-offset-1">

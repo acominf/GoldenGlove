@@ -30,68 +30,31 @@
 		<header>
             <?php
             $paginaId = 4;
+            include('php\clases\usuario.php');/* agrega la clase usuario*/
             include('php\include\headerI.php');/* agrega el menu*/
             ?>
         </header>
         <div class="container-fluid cuerpo">
-            <section class="row">
-                <div class="col-lg-3 ">
-                    <div class="thumbnail">
-                        <a href="imagenes/costales.jpg" data-toggle="lightbox">
-                            <img src="imagenes/costales.jpg" alt="costales-golden-glove">
+            <section class="row text-center text-lg-left">
+                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
+                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
+                </a>
+                <a class="d-block col-md-4 col-lg-3" href="imagenes/Sin%20nombre3.jpg" data-toggle="lightbox">
+                    <img class="img-fluid img-thumbnail" src="imagenes/Sin%20nombre3.jpg" alt="costales-golden-glove">
+                </a>
+                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
+                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
+                </a>
+                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
+                            <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
+                </a>
+                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
+                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
+                </a>
+                <div class="col-md-4 col-lg-3">
+                        <a class="d-block" href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox">
+                            <img class="img-fluid img-thumbnail" src="https://unsplash.it/600.jpg?image=251">
                         </a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/Sin%20nombre3.jpg" data-toggle="lightbox">
-                            <img src="imagenes/Sin%20nombre3.jpg" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                <!--
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/img1.jpg" data-toggle="lightbox">
-                            <img src="imagenes/img1.png" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/panoramica1.jpg" data-toggle="lightbox">
-                            <img src="imagenes/panoramica1.jpg" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                -->
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/costales.jpg" data-toggle="lightbox">
-                            <img src="imagenes/costales.jpg" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/costales.jpg" data-toggle="lightbox">
-                            <img src="imagenes/costales.jpg" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="imagenes/costales.jpg" data-toggle="lightbox">
-                            <img src="imagenes/costales.jpg" alt="costales-golden-glove">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox">
-                            <img src="https://unsplash.it/600.jpg?image=251">
-                        </a>
-                    </div>
                 </div>
             </section>
         </div>

@@ -1,0 +1,9 @@
+
+SCRIPT directiva use strict de javascript
+
+VERSIONES SOPORTADAS 
+CHROME 13.0, 
+EXPLORER 10.0, 
+FIREFOX 4.0, 
+SAFARI 6.0,
+OPERA 12.1

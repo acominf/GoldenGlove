@@ -23,7 +23,7 @@
                 <h1 class="">Alta de usuario</h1>
             </div>
             
-            <form method="POST" action="php/pagina/altaUsuario.php">
+            <form class="needs-validation" novalidate method="POST" action="php/pagina/validaUsuario.php">
                 <div class="card">
                        <div class="card-header">
                            Datos Personales
@@ -32,21 +32,22 @@
                            <div class="form-row">
                                <div class="form-group col-md-2 offset-md-1">
                                 <label for="nombre">Nombre(s):</label>
-                                <input class="form-control is-invalid" name="nombre" type="text" id="nombre" placeholder="Nombre">
+                                <input class="form-control" name="nombre" type="text" id="nombre" placeholder="Nombre" required>
+                                <span class="invalid-feedback"> Ingresa nombre</span>
                             </div>
                             <div class="form-group col-6 col-md-4">
                                 <label for="apellidoP">
                                     Apellido Paterno:
                                 </label>
-                                <input class="form-control is-valid" name="apellidoP" id="apellidoP" type="text" placeholder="Apellido Paterno">
-                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                <input class="form-control" name="apellidoP" id="apellidoP" type="text" placeholder="Apellido Paterno" required>
+                                <span class="invalid-feedback"> Ingresa apellido</span>
                             </div>
                             <div class="form-group col-6 col-md-4">
                                 <label for="apellidoM">
                                     Apellido Materno:
                                 </label>
-                                <input class="form-control" name="apellidoM" type="text" placeholder="Apellido Materno">
-                                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                                <input class="form-control" name="apellidoM" type="text" placeholder="Apellido Materno" required>
+                                <span class="invalid-feedback"> Ingresa apellido</span>
                             </div>
                         </div>
                         <div class="form-row">
@@ -54,7 +55,7 @@
                                 <label for="sexo">
                                         Sexo:
                                 </label>
-                                <select class="form-control" name="sexo">
+                                <select class="form-control" name="sexo" required>
                                     <option>
                                         Masculino
                                     </option>
@@ -62,12 +63,14 @@
                                         Femenino
                                     </option>
                                 </select>
+                                <span class="invalid-feedback"> Ingresa sexo</span>
                             </div>
                             <div class="form-group col-7 col-md-4">
                                <label for="mail">
                                    Mail
                                </label>
-                               <input type="email" class="form-control" name="mail" id="mail" placeholder="ejemplo@ejemplo.com">
+                               <input type="email" class="form-control" name="mail" id="mail" placeholder="ejemplo@ejemplo.com" required>
+                               <span class="invalid-feedback"> Ingresa mail</span>
                             </div>
                         </div>
                         <div class="form-row">
@@ -75,19 +78,22 @@
                                 <label for="direccion">
                                     Calle:
                                 </label>
-                                <input class="form-control" name="dir" type="text" placeholder="Calle">
+                                <input class="form-control" name="dir" type="text" id="dir" placeholder="Calle" required>
+                                <span class="invalid-feedback"> Ingresa calle</span>
                             </div>
                             <div class="form-group col-4 col-sm-2">
                                 <label for="numero">
                                     Número:
                                 </label>
-                                <input class="form-control" name="numero" type="number" placeholder="#">
+                                <input class="form-control" name="numero" type="number" id="numero" placeholder="#" required>
+                                <span class="invalid-feedback"> Ingresa número interior</span>
                             </div>
                             <div class="form-group col-xs-3 col-sm-2">
                                 <label for="cp">
                                     CP:
                                 </label>
-                                <input class="form-control" name="cp" type="number" placeholder="C.P">
+                                <input class="form-control" name="cp" id="cp" type="number" placeholder="C.P" required>
+                                <span class="invalid-feedback"> Ingresa código postal</span>
                             </div>
                         </div>
                         <div class="form-row">
@@ -95,13 +101,15 @@
                                 <label for="colonia">
                                     Colonia:
                                 </label>
-                                <input class="form-control" name="cp" type="text" placeholder="Colonia">
+                                <input class="form-control" name="colonia" id="colonia" type="text" placeholder="Colonia" required>
+                                <span class="invalid-feedback">Ingresa colonia</span>
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="estado">
                                     Estado:
                                 </label>
-                                <input class="form-control" name="estado" id="estado" type="text" placeholder="Estado">
+                                <input class="form-control" name="estado" id="estado" type="text" placeholder="Estado" required>
+                                <span class="invalid-feedback">Ingresa estado</span>
                             </div>
                         </div>
                         <div class="form-row">
@@ -109,13 +117,15 @@
                                 <label for="tel">
                                     Teléfono:
                                 </label>
-                                <input class="form-control" name="tel" type="tel" id="tel" placeholder="Teléfono">
+                                <input class="form-control" name="tel" type="tel" id="tel" placeholder="Teléfono" required>
+                                <span class="invalid-feedback">Ingresa teléfono</span>
                             </div>
                             <div class="form-group  col-3">
                                 <label for="fechaI">
                                     Fecha Ingreso:
                                 </label>
-                                <input class="form-control" name="fechaI" type="date" placeholder="Fecha Ingreso">
+                                <input class="form-control" name="fechaI" type="date" id="fechaIngreso" placeholder="Fecha Ingreso" required>
+                                <span class="invalid-feedback"> Ingresa fecha</span>
                             </div>
                         </div>
                     </div>
@@ -130,7 +140,8 @@
                                 <label for="usr">
                                     Usuario:
                                 </label>
-                                <input class="form-control" name="usr" id="usr" type="text" placeholder="usuario">
+                                <input class="form-control" name="usr" id="usr" type="text" placeholder="usuario" required>
+                                <span class="invalid-feedback"> Ingresa un nombre de usuario</span>
                             </div>
                         </div>
                        <div class="form-row justify-content-center">
@@ -138,7 +149,9 @@
                                 <label for="psw1">
                                     contraseña:
                                 </label>
-                                <input class="form-control" name="psw" id="psw1" type="password" placeholder="constraseña">
+                                <input class="form-control" name="psw" id="psw1" type="password" oninput="validaPsw()" placeholder="contraseña" 
+                                required>
+                                <span class="invalid-feedback"> Ingresa una contraseña</span>
                             </div>
                         </div>
                         <div class="form-row justify-content-center">
@@ -146,13 +159,15 @@
                                 <label for="psw2">
                                     repite contraseña:
                                 </label>
-                                <input class="form-control" name="psw" id="psw2" type="password" placeholder="constraseña">
+                                <input class="form-control" name="psw2" id="psw2" type="password" oninput="validaPsw()" placeholder="confirma contraseña" 
+                                required>
+                                <span class="invalid-feedback"> Verifica la contraseña</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="justify-content-center col-12">
-                    <button class="btn btn-success" type="submit" value="Registrar">Registrar</button>
+                    <button class="btn btn-success" id="btnRegistrar" type="submit" value="Registrar">Registrar</button>
                 </div>
             </form>
         </div>
@@ -161,5 +176,33 @@
             <script src="js/bootstrap.min.js"></script> <!-- CÓDIGO DE BOOTSTRAP -->
             <script src="js/popper.min.js"></script>
         
+        
+            <script>
+                //VERSIONES SOPORTADAS CHROME 13.0, EXPLORER 10.0, FIREFOX 4.0 SAFARI 6.0 OPERA 12.1
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+              'use strict';
+              window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                  form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+                
+            function validaPsw() {
+                var x = document.getElementById("psw1").value;
+                var y = document.getElementById("psw2").value;
+                document.getElementById("btnRegistrar").disabled = !(y == x);
+            }    
+            </script>
     </body>
 </html>

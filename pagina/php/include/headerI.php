@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    $usuario;
-    if(isset($_SESSION['usuario'])){
-        $usuario = $_SESSION['usuario'];
-    }
-?>
-
 <header>
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
@@ -25,12 +17,12 @@
                         </a>
                     </li>
                     <li class= "nav-item <?php echo $paginaId == 2 ? 'active' : ''; ?> ">
-                        <a class="nav-link" href="nosotros.html">
+                        <a class="nav-link" href="nosotros.php">
                             Nosotros
                         </a>
                     </li>
                     <li class= "nav-item <?php echo $paginaId == 3 ? 'active' : ''; ?> ">
-                        <a class="nav-link" href="entrenamiento.html">
+                        <a class="nav-link" href="entrenamiento.php">
                              Entrenamientos
                         </a>
                     </li>
@@ -58,9 +50,13 @@
                                     Perfil
                                 </a>
                             </li>
+                            <?php if($usuario != null and $usuario->esAdmin() == 1){
+                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"altaUsuario.php\">Alta Usuario</a></li>";
+                                     }
+                            ?>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="php/pagina/cierraSesion.php">
                                     Salir
                                 </a>
                             </li>
