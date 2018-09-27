@@ -1,5 +1,5 @@
 <?php
-require_once('..\clases\Pagina.php');
+require_once(__DIR__ . '/../clases/Pagina.php');
 /*require_once '/../nusoap/nusoap.php';
 
 $httpServer='localhost';

@@ -15,9 +15,9 @@
 	</head>
 	<body>
       <?php
-            include('php\clases\Pagina.php');
-            include('php\clases\Usuario.php');/* agrega la clase usuario*/
-            include_once("/php/config.php"); /*agrega los datos de configuración*/
+            include(__DIR__ . '/php/clases/Pagina.php');
+            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
+            include_once(__DIR__ . "/php/config.php"); /*agrega los datos de configuración*/
             include_once('formContenido.php');
             session_start();
             $usuario;
@@ -30,7 +30,7 @@
             }
             $_SESSION['pagina'] = $pagina;
             
-            include('php\include\headerI.php');/* agrega el menu*/
+            include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
         ?>
         <div class="container-fluid cuerpo">
            <div class="row">

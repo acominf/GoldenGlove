@@ -20,3 +20,6 @@ function agregaCont() {
     document.getElementById("formContenido").action = "php/pagina/agregaContenido.php";
 }
 
+function eliminaContenido(contenidoId){
+    document.getElementById("contenidoId").value=contenidoId;
+}

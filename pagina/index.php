@@ -15,12 +15,14 @@
 	</head>
 	<body>
       <?php
-            include('php\clases\Pagina.php');
-            include('php\clases\Usuario.php');/* agrega la clase usuario*/
-            include_once("/php/config.php"); /*agrega los datos de configuración*/
+            
+            include_once(__DIR__ . '/php/clases/Pagina.php');
+            include_once(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include_once('formContenido.php');
-            session_start();
-            $usuario;
+        session_start();    
+        //include_once('modEliminaContenido.php');
+            
+            $usuario=null;
             $paginaId = 1;
             $pagina = new Pagina($paginaId);
             if(isset($_SESSION['usuario'])){
@@ -38,7 +40,7 @@
                 $pagina = 1;//numero de pagina del navegador de los articulos
                 header('location:index.php?numPag=1');
             }
-            include('php\include\headerI.php');/* agrega el menu*/
+            include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
             /*
             mysqli_report(MYSQLI_REPORT_STRICT);//Permite arrojar excepciones personalizadas
             try{
@@ -68,7 +70,7 @@
         ?>
         <div class="container-fluid cuerpo">
            <div class="row">
-               <button type="button" class="btn btn-primary <?php echo $usuario != null and $usuario->esAdmin() == 1 ? '': 'invisible'; ?>" data-toggle="modal" data-target="#modalAgregaContenido" onclick="agregaCont()">
+               <button type="button" class="btn btn-primary <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-toggle="modal" data-target="#modalAgregaContenido" onclick="agregaCont()">
                   Agrega contenido
                 </button>
            </div>
@@ -113,11 +115,14 @@
                         $i = ($numPag-1) * $cantContenidosXpag;
                         for($it = 0; $it < $cantContenidosXpag && $i < count($pagina->getContenidos()) ; $it++){ ?>
                             <div class="row" id="E<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>">
-                                <h2 class="col-11">
+                                <h2 class="col-10">
                                     <?php echo $pagina->getContenidos()[$i]->getTitulo() ?>  
                                 </h2>
-                                <button class="btn btn-secondary btn-sm col-1" type="button" onclick="actualizaCont(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
-                                    actu
+                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="actualizaCont(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
+                                    edita
+                                </button>
+                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
+                                    Eliminar
                                 </button>
                                 <p> 
                                     <?php  echo nl2br($pagina->getContenidos()[$i]->getContenido()) ?> 

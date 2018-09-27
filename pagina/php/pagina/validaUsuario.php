@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once(__DIR__ . '/../config.php');
 
 if(($_POST['nombre'] == null or ctype_space($_POST['nombre'])) or ($_POST['apellidoP'] == null or ctype_space($_POST['apellidoP'])) or ($_POST['apellidoM'] == null or ctype_space($_POST['apellidoM'])) or ($_POST['sexo'] == null or ctype_space($_POST['sexo'])) or ($_POST['mail'] == null or ctype_space($_POST['mail'])) or
 ($_POST['dir']== null or ctype_space($_POST['dir'])) or ($_POST['numero'] == null or ctype_space($_POST['numero'])) or ($_POST['cp'] == null or ctype_space($_POST['cp'])) or ($_POST['colonia'] == null or ctype_space($_POST['colonia'])) or ( $_POST['estado'] == null or ctype_space($_POST['estado'])) or ($_POST['tel'] == null or ctype_space($_POST['tel'])) or ($_POST['fechaI'] == null or ctype_space($_POST['fechaI'])) or ($_POST['usr'] == null or ctype_space($_POST['usr'])) or ($_POST['psw'] == null or ctype_space($_POST['psw'])))

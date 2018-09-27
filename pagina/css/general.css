@@ -105,3 +105,9 @@ p{
 .asideTitle{
     color: #c0924f;
 }
+
+.usuarios{
+    border: 1px solid #c0924f;
+    color: #c1c2c6;
+    border-radius: 25px;
+}

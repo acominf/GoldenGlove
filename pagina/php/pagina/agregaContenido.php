@@ -1,5 +1,5 @@
 <?php
-require_once('..\clases\Pagina.php');
+require_once(__DIR__ . '/../clases/Pagina.php');
 /*require_once '/../nusoap/nusoap.php';
 
 $httpServer='localhost';
@@ -21,7 +21,7 @@ else {
         try{
             $pagina->agregaContenido($titulo,$contenido);
              echo "<script>alert('Se insertó el contenido correctamente');";
-            header('location:../../'. $pagina->getNombre() . '.php');
+            header('location: ../../'. $pagina->getNombre() . '.php');
         }
         catch(Exception $ex){
             echo $ex->getMessage();

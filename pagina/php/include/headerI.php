@@ -51,7 +51,9 @@
                                 </a>
                             </li>
                             <?php if($usuario != null and $usuario->esAdmin() == 1){
-                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"altaUsuario.php\">Alta Usuario</a></li>";
+                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"altaUsuario.php\">Alta Usuario</a></li>
+                            <li class=\"dropdown-item\"><a class=\"nav-link\" href=\"usuarios.php\">Usuarios</a></li>
+                            ";
                                      }
                             ?>
                             <li class="dropdown-divider"></li>

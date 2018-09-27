@@ -15,8 +15,8 @@
     </head>
     <body>
         <?php 
-            include('php\clases\usuario.php');/* agrega la clase usuario*/
-            include_once('php\include\headerI.php');
+            include(__DIR__ . '/php/clases/usuario.php');/* agrega la clase usuario*/
+            include_once(__DIR__ . '/php/include/headerI.php');
         ?>
         <div class="container">
             <div class="row justify-content-center">

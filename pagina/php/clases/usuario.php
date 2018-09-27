@@ -59,7 +59,6 @@ class Usuario{
                 $this->fechaAlta = $fila['fechaAlta'];
                 $consulta->free_result();
                 $consulta->close();
-
             }
             else {
                 echo 'error en la consulta';
@@ -68,7 +67,6 @@ class Usuario{
         catch(exception $ex){
             echo $ex->message;
         }
-        
     }
     
     public function esAdmin(){

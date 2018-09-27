@@ -15,7 +15,7 @@
     </head>
     <body>
         <?php
-        include_once('php\include\headerI.php');
+        include_once(__DIR__ . '/php/include/headerI.php');
         ?>
         <div class="container">
             <div class="row justify-content-center">

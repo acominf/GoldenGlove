@@ -30,8 +30,8 @@
 		<header>
             <?php
             $paginaId = 4;
-            include('php\clases\usuario.php');/* agrega la clase usuario*/
-            include('php\include\headerI.php');/* agrega el menu*/
+            include(__DIR__ . '/php/clases/usuario.php');/* agrega la clase usuario*/
+            include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
             ?>
         </header>
         <div class="container-fluid cuerpo">
