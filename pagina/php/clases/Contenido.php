@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../conexion/conexion.php';
+require_once __DIR__ . '/../conexion/Conexion.php';
 
 class Contenido{
 	public $contenidoId;
