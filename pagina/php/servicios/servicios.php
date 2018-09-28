@@ -1,6 +1,6 @@
 <?php
 
-require_once '/../clases/pagina.php';
+require_once '/../clases/Pagina.php';
 require_once '/../nusoap/nusoap.php';
 
 $httpServer='localhost';
