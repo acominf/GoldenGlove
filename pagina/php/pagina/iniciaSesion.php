@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . '/../clases/usuario.php');
+include_once(__DIR__ . '/../clases/Usuario.php');
 include_once(__DIR__ .'/../config.php');
 
 if($_POST['usr'] == null && $_POST['psw'] == null ){

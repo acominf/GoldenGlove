@@ -30,7 +30,7 @@
 		<header>
             <?php
             $paginaId = 4;
-            include(__DIR__ . '/php/clases/usuario.php');/* agrega la clase usuario*/
+            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
             ?>
         </header>
