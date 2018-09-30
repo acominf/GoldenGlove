@@ -7,8 +7,10 @@ $dirWSAdmin='/goldenGlove/';//'
 $puerto = ':8080';
 $namespace='http://'.$httpServer.$puerto.'/goldenglove/GoldenGlove/pagina/php/servicios/servicios.php';
 */
+
 if($_POST['titulo'] == null || $_POST['contenido'] == null || $_POST['contenidoId'] == null || $_POST['paginaId'] == null){
 	//header('location:index.html');
+	
 	echo 'llenar los campos correctamente';
 }
 else {

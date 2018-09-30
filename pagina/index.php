@@ -15,13 +15,10 @@
 	</head>
 	<body>
       <?php
-            
             include_once(__DIR__ . '/php/clases/Pagina.php');
             include_once(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
-            include_once('formContenido.php');
         session_start();    
         //include_once('modEliminaContenido.php');
-            
             $usuario=null;
             $paginaId = 1;
             $pagina = new Pagina($paginaId);
@@ -87,27 +84,6 @@
                             </h2>
                             <?php $i++; ?> 
                         <?php } ?>
-                        
-                        <?php
-                        /*
-                        $start = ($numPag-1) * $cantContenidosXpag;
-                        if($res = $cnn->prepare('SELECT contenidoId,contenido,titulo FROM contenidos WHERE paginaId = ? ORDER BY orden DESC LIMIT ? , ?')){
-                            $res->bind_param('iii',$paginaId,$start,$cantContenidosXpag);
-                            $res->execute();
-                            $res->store_result();
-                            $res->bind_result($contenidoId,$contenido,$titulo);
-                        }
-                        else {
-                            echo 'error en la consulta';
-                        }*/ ?>
-                    <?php /*while ($res->fetch()){ ?>
-                            <h2> 
-                                <a class="" href = "#E<?php echo $contenidoId ?> "> 
-                                    <?php echo $titulo ?> 
-                                </a>
-                            </h2>
-                    <?php    } ?>
-                    */?>
                     </nav>
                 </aside>
                 <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
@@ -193,6 +169,11 @@
         </div>
         <div id="fb-root">
         </div>
+        
+        <?php 
+            include_once('formContenido.php');
+            include_once('modEliminaContenido.php');
+        ?>
         <script>
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];

@@ -18,7 +18,6 @@
             include(__DIR__ . '/php/clases/Pagina.php');
             include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include_once(__DIR__ . "/php/config.php"); /*agrega los datos de configuración*/
-            include_once('formContenido.php');
             session_start();
             $usuario;
             $paginaId = 2;
@@ -34,7 +33,7 @@
         ?>
         <div class="container-fluid cuerpo">
            <div class="row">
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregaContenido" onclick="agregaCont()">
+               <button type="button" class="btn btn-primary <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-toggle="modal" data-target="#modalAgregaContenido" onclick="agregaCont()">
                   Agrega contenido
                 </button>
            </div>
@@ -55,11 +54,14 @@
                     <?php 
                         foreach($pagina->getContenidos() as $contenido){ ?>
                             <div class="row" id="E<?php echo $contenido->getContenidoId() ?>">
-                                <h2 class="col-11">
+                                <h2 class="col-10">
                                     <?php echo $contenido->getTitulo() ?>  
                                 </h2>
-                                <button class="btn btn-secondary btn-sm col-1" type="button" onclick="actualizaCont(<?php echo $contenido->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
-                                    actualiza
+                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="actualizaCont(<?php echo $contenido->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
+                                    actualizar
+                                </button>
+                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $contenido->getContenidoId() ?>)" data-toggle="modal" data-target="#modalEliminaContenido" >
+                                    Eliminar
                                 </button>
                                 <p> 
                                     <?php  echo nl2br($contenido->getContenido()) ?> 
@@ -83,6 +85,10 @@
 		
         <div id="fb-root">
         </div>
+        <?php 
+            include_once('formContenido.php'); 
+            include_once('modEliminaContenido.php');
+        ?>
         <script>
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];

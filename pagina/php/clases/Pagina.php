@@ -117,6 +117,17 @@ class Pagina{
     private function validaContenido($titulo,$contenido){
         return $titulo != null || !ctype_space($titulo) || $contenido !=null || !ctype_space($contenido);
     }
+    
+    public function eliminaContenido($contenidoId){
+        
+        $db = new Database();
+        if($db->conectado){
+            if($db->eliminaContenido($contenidoId) <= 0){
+                throw new Exception('Error al eliminar el contenido',10000);
+            }
+        }
+        $db = null;
+    }
 	
     /*
 	public function agregaCon($titulo,$contenido,$orden){

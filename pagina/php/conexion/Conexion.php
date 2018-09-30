@@ -127,6 +127,21 @@ class Database{
 		
 		return $regAct;
 	}
+	
+	public function eliminaContenido($contenidoId){
+		$regAct = 0;
+		
+		if($this->conectado){
+			if($ins = $this->cnn->prepare('DELETE FROM contenidos WHERE contenidoId = ?')){
+				$ins->bind_param('i',$contenidoId);
+				$ins->execute();
+				$regAct = $ins->affected_rows;
+				$ins->close();
+			}
+		}
+		
+		return $regAct;
+	}
 
 	function __destruct(){
 		$this->cnn->close();
