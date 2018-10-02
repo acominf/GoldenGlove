@@ -23,3 +23,24 @@ function agregaCont() {
 function eliminaContenido(contenidoId){
     document.getElementById("contenidoId").value=contenidoId;
 }
+
+unction editaUsuario(usuarioId) {
+    var usuarioId = document.getElementById(usuarioId);
+    var nombre = document.getElementById("nombre");
+    var apP = document.getElementById("apellidoP");
+    var apM = document.getElementById("apellidoM");
+    //var sexo = document.getElementById("sexo");
+    var mail = document.getElementById("mail");
+    var calle = document.getElementById("dir");
+    var numero = document.getElementById("numero");
+    var cp = document.getElementById("cp");
+    var col = document.getElementById("colonia");
+    var estado = document.getElementById("estado");
+    var tel = document.getElementById("tel");
+    var fechaIng = document.getElementById("fechaIngreso");
+    
+    document.getElementById("tituloModal").innerHTML = "Editar usuario";
+    document.getElementById("formUsuario").action = "php/pagina/editaUsuario.php";
+    document.getElementById("btnRegistrar").innerHTML = "Actualizar";
+    document.getElementById("modalButton").value = usuarioId;
+}

@@ -45,11 +45,11 @@
                                         editar
                                     </button>
                                     <div class="row">
-                                       <div class="col-md-3">
+                                       <div class="col-md-3" id="usuario">
                                             <label>Usuario:</label>
                                             <?php echo $fila['usuario']; ?>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" id="fechaIngreso">
                                             <label>Fecha Ingreso:</label>
                                             <?php echo $fila['fechaIng']; ?>
                                         </div>
@@ -58,27 +58,27 @@
 
                                 <div style="color:white;" id="collapse<?php echo $fila['usuarioId']?>" class="collapse" aria-labelledby="headingOne" data-parent="#usuario<?php echo $fila['usuarioId'];?>">
                                   <div class="card-body row">
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3" id="dir">
                                        <label>Calle:</label>
                                         <?php echo $fila['calle'] . ' #' . $fila['numeroInt']; ?>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3" id="colonia">
                                        <label>Colonia:</label>
                                         <?php echo $fila['colonia']; ?>
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-2" id="cp">
                                        <label>C.P:</label>
                                         <?php echo $fila['cp']; ?>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3" id="estado">
                                        <label>Estado:</label>
                                         <?php echo $fila['estado']; ?>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3" id="tel">
                                        <label>Teléfono:</label>
                                         <?php echo $fila['telefono']; ?>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-3" id ="mail">
                                        <label>Mail:</label>
                                         <?php echo $fila['mail']; ?>
                                     </div>

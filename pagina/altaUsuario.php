@@ -15,7 +15,19 @@
     </head>
     <body>
         <?php 
-            include(__DIR__ . '/php/clases/usuario.php');/* agrega la clase usuario*/
+            session_start();
+            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
+            
+            var_dump($_SESSION['usuario']);
+            
+            if(!isset($_SESSION['usuario']) || $_SESSION['usuario']==null ){
+                header("location: index.php");
+            }
+            else{
+                if(!$_SESSION['usuario']->esAdmin()){
+                    header("location: index.php");
+                }
+            }
             include_once(__DIR__ . '/php/include/headerI.php');
         ?>
         <div class="container">
@@ -46,7 +58,7 @@
                                 <label for="apellidoM">
                                     Apellido Materno:
                                 </label>
-                                <input class="form-control" name="apellidoM" type="text" placeholder="Apellido Materno" required>
+                                <input class="form-control" name="apellidoM" id="apellidoM" type="text" placeholder="Apellido Materno" required>
                                 <span class="invalid-feedback"> Ingresa apellido</span>
                             </div>
                         </div>
@@ -55,7 +67,7 @@
                                 <label for="sexo">
                                         Sexo:
                                 </label>
-                                <select class="form-control" name="sexo" required>
+                                <select class="form-control" name="sexo" id="sexo" required>
                                     <option>
                                         Masculino
                                     </option>
@@ -92,7 +104,7 @@
                                 <label for="cp">
                                     CP:
                                 </label>
-                                <input class="form-control" name="cp" id="cp" type="number" placeholder="C.P" required>
+                                <input class="form-control" name="cp" id="cp" type="number" min="0" placeholder="C.P" required>
                                 <span class="invalid-feedback"> Ingresa código postal</span>
                             </div>
                         </div>

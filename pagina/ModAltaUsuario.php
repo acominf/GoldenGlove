@@ -1,9 +1,8 @@
-
 <div class="modal fade" id="modalAltaUsuario" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title">
+                <h1 class="modal-title" id ="tituloModal">
                     Alta de usuario
                 </h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -11,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" novalidate method="POST" action="php/pagina/validaUsuario.php">
+                <form class="needs-validation" id= "formUsuario" novalidate method="POST" action="php/pagina/validaUsuario.php">
                     <div class="card">
                            <div class="card-header">
                                Datos Personales
@@ -155,41 +154,10 @@
                         </div>
                     </div>
                     <div class="justify-content-center col-12">
-                        <button class="btn btn-success" id="btnRegistrar" type="submit" value="Registrar">Registrar</button>
+                        <button class="btn btn-success" id="btnRegistrar" type="submit" value="Registrar"></button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-        
-            <script>
-                /*
-                //VERSIONES SOPORTADAS CHROME 13.0, EXPLORER 10.0, FIREFOX 4.0 SAFARI 6.0 OPERA 12.1
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function() {
-              'use strict';
-              window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                  form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                      //event.preventDefault();
-                      //event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                  }, false);
-                });
-              }, false);
-            })();
-                
-            function validaPsw() {
-                var x = document.getElementById("psw1").value;
-                var y = document.getElementById("psw2").value;
-                document.getElementById("btnRegistrar").disabled = !(y == x);
-            }
-            */
-            </script>
-            
