@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalAltaUsuario" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title" id ="tituloModal">
@@ -33,26 +33,26 @@
                                     <label for="apellidoM">
                                         Apellido Materno:
                                     </label>
-                                    <input class="form-control" name="apellidoM" type="text" placeholder="Apellido Materno" required>
+                                    <input class="form-control" name="apellidoM" id="apellidoM" type="text" placeholder="Apellido Materno" required>
                                     <span class="invalid-feedback"> Ingresa apellido</span>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-5 col-md-2 offset-md-1">
+                                <div class="form-group col-12 col-md-3 offset-md-1">
                                     <label for="sexo">
                                             Sexo:
                                     </label>
-                                    <select class="form-control" name="sexo" required>
-                                        <option>
+                                    <select class="form-control" id="listaSexo" name="sexo" required>
+                                        <option value ='M'>
                                             Masculino
                                         </option>
-                                        <option>
+                                        <option value ='F'>
                                             Femenino
                                         </option>
                                     </select>
                                     <span class="invalid-feedback"> Ingresa sexo</span>
                                 </div>
-                                <div class="form-group col-7 col-md-4">
+                                <div class="form-group col-12 col-md-4">
                                    <label for="mail">
                                        Mail
                                    </label>
@@ -100,14 +100,14 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-6 col-3 offset-md-1">
+                                <div class="form-group col-12 col-md-4 offset-md-1">
                                     <label for="tel">
                                         Teléfono:
                                     </label>
                                     <input class="form-control" name="tel" type="tel" id="tel" placeholder="Teléfono" required>
                                     <span class="invalid-feedback">Ingresa teléfono</span>
                                 </div>
-                                <div class="form-group  col-3">
+                                <div class="form-group  col-12 col-md-4">
                                     <label for="fechaI">
                                         Fecha Ingreso:
                                     </label>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" id="datosSesion">
                         <div class="card-header">
                             Datos de Sesión
                         </div>
@@ -153,8 +153,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="justify-content-center col-12">
-                        <button class="btn btn-success" id="btnRegistrar" type="submit" value="Registrar"></button>
+                    <div class="form-row">
+                        <div class="col-8">
+                            <button class="btn btn-success" id="btnRegistrar" type="submit" name="usuarioId" value="">Registrar</button>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <input name="esAdmin" type="checkbox" id="admin">
+                                <label for="admin">Es Administrador?</label>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

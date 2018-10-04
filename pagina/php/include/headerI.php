@@ -1,3 +1,4 @@
+<?php include_once(__DIR__ . '/../../ModAltaUsuario.php'); ?>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
@@ -51,7 +52,7 @@
                                 </a>
                             </li>
                             <?php if($usuario != null and $usuario->esAdmin() == 1){
-                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"altaUsuario.php\">Alta Usuario</a></li>
+                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalAltaUsuario\">Alta Usuario</a></li>
                             <li class=\"dropdown-item\"><a class=\"nav-link\" href=\"usuarios.php\">Usuarios</a></li>
                             ";
                                      }

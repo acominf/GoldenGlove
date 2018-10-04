@@ -20,9 +20,10 @@
             //include_once(__DIR__ . '/ModAltaUsuario.php');
             session_start();
             $usuario;
-            if(isset($_SESSION['usuario'])){
-                $usuario = $_SESSION['usuario'];
+            if(!isset($_SESSION['usuario'])){
+                header('location:index.php');
             }
+            $usuario = $_SESSION['usuario'];
             include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
         ?>
         <div class="container cuerpo">
@@ -33,60 +34,95 @@
                         }catch(Exception $ex){
                             echo "Error al conectar a la base de datos";
                         }
-                        if($res = $cnn->query('SELECT * FROM usuario')){
+                        if($res = $cnn->query('SELECT U.*,TU.tipoUsuario FROM usuario AS U INNER JOIN tipousuario AS TU on TU.tipoUsuarioId = U.tipoUsuarioId')){
                             while($fila = $res->fetch_assoc()){ ?>
-                            <div class="accordion" id="usuario<?php echo $fila['usuarioId']?>">
-                              <div style="border: 1px solid #c0924f;">
-                                <div style="border-bottom: 1px solid #c0924f;color:white;" id="header <?php echo $fila['usuarioId']?>">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $fila['usuarioId']?>" aria-expanded="true" aria-controls="collapseOne">
-                                      <?php  echo $fila['nombre'] . ' ' . $fila['apellidoPat'] . ' ' . $fila['apellidoMat']; ?>
+                            <div class="accordion" id="usuario<?php echo $fila['usuarioId'];?>">
+                              <div style="border: 1px solid #c0924f; margin:25px;">
+                                <div style="border-bottom: 1px solid #c0924f;color:white;">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $fila['usuarioId']?>" aria-expanded="true" aria-controls="collapseOne" id="nombreU" value ="<?php  echo $fila['nombre'] . '+' . $fila['apellidoPat'] . '+' . $fila['apellidoMat']; ?>">
+                                     <strong> 
+                                        <?php  echo $fila['nombre'] . ' ' . $fila['apellidoPat'] . ' ' . $fila['apellidoMat']; ?>
+                                     </strong>
                                     </button>
-                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#modalAltaUsuario">
-                                        editar
+                                    <button class="btn btn-secondary" type="button" onclick="editaUsuario(<?php echo  $fila['usuarioId']; ?>)" data-toggle="modal" data-target="#modalAltaUsuario" >
+                                        Editar
                                     </button>
                                     <div class="row">
-                                       <div class="col-md-3" id="usuario">
+                                       <div class="col-md-5">
                                             <label>Usuario:</label>
-                                            <?php echo $fila['usuario']; ?>
+                                            <p id="usuarioU">
+                                                <?php echo $fila['usuario']; ?> 
+                                            </p>
                                         </div>
-                                        <div class="col-md-3" id="fechaIngreso">
+                                        <div class="col-md-3">
                                             <label>Fecha Ingreso:</label>
-                                            <?php echo $fila['fechaIng']; ?>
+                                            <p id="fechaIngresoU">
+                                                <?php echo $fila['fechaIng']; ?>
+                                            </p>
                                         </div>
+                                        <div class="col-md-2">
+                                            <label>Sexo:</label>
+                                            <p id="sexo">
+                                                <?php echo $fila['sexo'];?>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>tipoUsuario:</label>
+                                            <p id="esAdmin" value = <?php echo $fila['tipoUsuarioId'];?> >
+                                                <?php echo $fila['tipoUsuario'];?>
+                                            </p>
                                     </div>
                                 </div>
 
                                 <div style="color:white;" id="collapse<?php echo $fila['usuarioId']?>" class="collapse" aria-labelledby="headingOne" data-parent="#usuario<?php echo $fila['usuarioId'];?>">
                                   <div class="card-body row">
-                                    <div class="col-12 col-md-3" id="dir">
+                                    <div class="col-12 col-md-3">
                                        <label>Calle:</label>
-                                        <?php echo $fila['calle'] . ' #' . $fila['numeroInt']; ?>
+                                        <p id="dirU">
+                                            <?php echo $fila['calle'] . ' #' . $fila['numeroInt']; ?>
+                                        </p>
                                     </div>
-                                    <div class="col-12 col-md-3" id="colonia">
+                                    <div class="col-12 col-md-3">
                                        <label>Colonia:</label>
+                                       <p id="coloniaU">
                                         <?php echo $fila['colonia']; ?>
+                                        </p>
                                     </div>
-                                    <div class="col-12 col-md-2" id="cp">
-                                       <label>C.P:</label>
-                                        <?php echo $fila['cp']; ?>
+                                    <div class="col-12 col-md-2">
+                                       <label>
+                                            C.P:
+                                       </label>
+                                        <p  id="cpU">
+                                            <?php echo $fila['cp']; ?>
+                                        </p>
                                     </div>
-                                    <div class="col-12 col-md-3" id="estado">
-                                       <label>Estado:</label>
-                                        <?php echo $fila['estado']; ?>
+                                    <div class="col-12 col-md-3">
+                                       <label>
+                                            Estado:
+                                       </label>
+                                       <p id="estadoU">
+                                            <?php echo $fila['estado']; ?>
+                                        </p>
                                     </div>
-                                    <div class="col-12 col-md-3" id="tel">
-                                       <label>Teléfono:</label>
-                                        <?php echo $fila['telefono']; ?>
+                                    <div class="col-12 col-md-3">
+                                       <label>
+                                            Teléfono:
+                                        </label>
+                                        <p id="telU">
+                                            <?php echo $fila['telefono']; ?>
+                                        </p>
                                     </div>
-                                    <div class="col-12 col-md-3" id ="mail">
-                                       <label>Mail:</label>
-                                        <?php echo $fila['mail']; ?>
+                                    <div class="col-12 col-md-3">
+                                       <label>
+                                            Mail:
+                                        </label>
+                                        <p id="mailU">
+                                            <?php echo $fila['mail']; ?>
+                                        </p>
                                     </div>
-                                    
                                   </div>
                                 </div>
                               </div>
-
                             </div>
 
                             <!--  <div class="row">

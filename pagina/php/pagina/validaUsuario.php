@@ -30,7 +30,6 @@ else{
         mysqli_report(MYSQLI_REPORT_STRICT);
         $cnn = new mysqli(SRVDR,USR,PASS,DB);
         if($inserta = $cnn->prepare("INSERT INTO usuario(nombre,apellidoMat,apellidoPat,sexo,mail,calle,numeroInt,cp,colonia,estado,telefono,fechaIng,usuario,psw,activo,tipoUsuarioId,fechaAlta) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")){
-            echo 'aeui esttoy';
             if(!$inserta->bind_param('sssssssssssssssss',$nombre,$apellidoMat,$apellidoPat,$sexo,$mail,$calle,$numeroInt,$cp,$colonia,$estado,$telefono,$fechaIng,$usuario,$psw,$activo,$tipoUsuarioId,$fechaAlta)){
             echo "Falló la vinculación de parámetros: ";
             }
