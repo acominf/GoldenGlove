@@ -24,6 +24,25 @@ function eliminaContenido(contenidoId){
     document.getElementById("contenidoId").value=contenidoId;
 }
 
+function altaUsuario() {
+    document.getElementById("datosSesion").style.display = 'block';
+    document.getElementById("nombre").value = "";
+    document.getElementById("apellidoP").value = "";
+    document.getElementById("apellidoM").value = "";
+    document.getElementById("mail").value = "";
+    document.getElementById("dir").value = "";
+    document.getElementById("numero").value = "";
+    document.getElementById("cp").value = "";
+    document.getElementById("colonia").value = "";
+    document.getElementById("estado").value = "";
+    document.getElementById("tel").value = "";
+    document.getElementById("fechaIngreso").value = "";
+    document.getElementById("tituloModal").innerHTML = "Registrar usuario";
+    document.getElementById("formUsuario").action = "php/pagina/validaUsuario.php";
+    document.getElementById("btnRegistrar").innerHTML = "Registrar";
+    document.getElementById("btnRegistrar").value = "";
+}
+
 function editaUsuario(usuarioId) {
     var nombre = document.getElementById("nombreU").value.split("+");
     var sexo = document.getElementById("sexo").innerHTML.trim();

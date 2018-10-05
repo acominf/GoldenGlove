@@ -47,12 +47,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="perfil.php">
                                     Perfil
                                 </a>
                             </li>
                             <?php if($usuario != null and $usuario->esAdmin() == 1){
-                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalAltaUsuario\">Alta Usuario</a></li>
+                            echo "<li class=\"dropdown-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalAltaUsuario\" onclick=\"altaUsuario()\">Alta Usuario</a></li>
                             <li class=\"dropdown-item\"><a class=\"nav-link\" href=\"usuarios.php\">Usuarios</a></li>
                             ";
                                      }

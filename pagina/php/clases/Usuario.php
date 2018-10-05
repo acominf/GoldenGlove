@@ -2,30 +2,26 @@
 
 class Usuario{
     public $usuarioId;
-    private $nombre;
-    private $apellidoMat;
-    private $apellidoPat;
-    private $sexo;
-    private $correo;
-    private $calle;
-    private $numeroInt;
-    private $cp;
-    private $colonia;
-    private $estado;
-    private $telefono;
-    private $fechaIng;
-    private $usuario;
-	private $psw;
-    private $activo;
-    private $tipoUsuarioId;
-    private $fechaAlta;
+    public $nombre;
+    public $apellidoMat;
+    public $apellidoPat;
+    public $sexo;
+    public $correo;
+    public $calle;
+    public $numeroInt;
+    public $cp;
+    public $colonia;
+    public $estado;
+    public $telefono;
+    public $fechaIng;
+    public $usuario;
+	public $psw;
+    public $activo;
+    public $tipoUsuarioId;
+    public $fechaAlta;
     
     
     public function __construct(){
-    }
-    
-    public function getUsuario(){
-        return $this->usuario;
     }
     
     public function consulta($usuario,$psw){
@@ -73,6 +69,52 @@ class Usuario{
         return $this->tipoUsuarioId == 1;
     }
 
+    public function getNombreCompleto(){
+        return $this->nombre . ' ' . $this->apellidoPat . ' ' . $this->apellidoMat;
+    }
 
+    public function getsexo(){
+        return $this->sexo;
+    }
+    
+    public function correo(){
+        return $this->correo;
+    }
+    
+    public function getDirCompleta(){
+        return $this->calle . '#' . $this->numeroInt;
+    }
+    
+    public function getCp(){
+        return $this->cp;
+    }
+    
+    public function getColonia(){
+        return $this->colonia;
+    }
+    
+    public function getEstado(){
+        return $this->estado;
+    }
+    
+    public function getTelefono(){
+        return $this->telefono;
+    }
+    
+    public function getFechaIngreso(){
+        return $this->fechaIng;
+    }
+    
+    public function getUsuario(){
+        return $this->usuario;
+    }
+    
+    public function getActivo(){
+        return $this->activo;
+    }
+    
+    public function getFechaAlta(){
+        return $this->fechaAlta;
+    }
 
 }

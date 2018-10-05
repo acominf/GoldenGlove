@@ -20,7 +20,7 @@
             //include_once(__DIR__ . '/ModAltaUsuario.php');
             session_start();
             $usuario;
-            if(!isset($_SESSION['usuario'])){
+            if(!isset($_SESSION['usuario']) || $_SESSION['usuario']->esAdmin() != 1){
                 header('location:index.php');
             }
             $usuario = $_SESSION['usuario'];
