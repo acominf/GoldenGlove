@@ -12,6 +12,12 @@
 		<link rel="stylesheet" href="css/general.css">
         <script src="js/funciones.js"></script>
 		<title>Golden Glove</title>
+		<style  type="text/css">
+		    .datosPer{
+		        border-right: 1px solid #c0924f;
+		        
+		    }
+		</style>
 	</head>
 	<body>
         <?php 
@@ -23,9 +29,7 @@
             }
             $usuario = $_SESSION['usuario'];
             
-            
             include_once(__DIR__ . '/php/include/headerI.php');
-            
             
         ?>
         <div class="container d-flex justify-content-center">
@@ -37,86 +41,71 @@
                 </h1>
             </div>
         </div>
-            <div>
-                <h1>
+        <aside class="row">
+            <div class=" col-6 col-sm-3 col-md-2 col-lg-2 datosPer">
+                <h4>
+                    Datos Personales
+                </h4>
+                <p>
+                    <?php
+                        echo $usuario->getUsuario();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getFechaIngreso();
+                    ?>
+                </p>
+                <p>
                     <?php
                         echo $usuario->getsexo();
                     ?>
-                </h1>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->correo();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getDirCompleta();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getCp();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getColonia();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getEstado();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getTelefono();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getActivo();
+                    ?>
+                </p>
+                <p>
+                    <?php
+                        echo $usuario->getFechaAlta();
+                    ?>
+                </p>
             </div>
-        <div >
-            <h1>
-                <?php
-                    echo $usuario->correo();
-                ?>
-            </h1>
-        </div>
-                        
-    <div >
-        <h1>
-            <?php
-                echo $usuario->getDirCompleta();
-            ?>
-        </h1>
-    </div>
-    <div >
-        <h1>
-            <?php
-                echo $usuario->getCp();
-            ?>
-        </h1>
-    </div>
-    <div >
-        <h1>
-            <?php
-                echo $usuario->getColonia();
-            ?>
-        </h1>
-    </div>
-    <div >
-        <h1>
-            <?php
-                echo $usuario->getEstado();
-            ?>
-        </h1>
-    </div>
-    <div>
-        <h1>
-            <?php
-                echo $usuario->getTelefono();
-            ?>
-        </h1>
-    </div>
-    <div>
-        <h1>
-            <?php
-                echo $usuario->getFechaIngreso();
-            ?>
-        </h1>
-    </div>
-    <div>
-        <h1>
-            <?php
-                echo $usuario->getUsuario();
-            ?>
-        </h1>
-    </div>
-    <div>
-        <h1>
-            <?php
-                echo $usuario->getActivo();
-            ?>
-        </h1>
-    </div>
-    <div >
-        <h1>
-            <?php
-                echo $usuario->getFechaAlta();
-            ?>
-        </h1>
-    </div>
-        
-        
+            <div class="col-md-7">
+                <p>Hola</p>
+            </div>
+        </aside>        
         
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<script src="js/jquery.js"></script><!-- CÓDIGO DE BOOTSTRAP -->

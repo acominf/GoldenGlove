@@ -24,8 +24,6 @@ class Contenido{
 		$this->orden = $orden;
 	}
     
-    
-	
 	public function actualizaContenido(){
 		$db;
 		$cantAct = 0;

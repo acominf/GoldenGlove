@@ -26,7 +26,6 @@ class Usuario{
     
     public function consulta($usuario,$psw){
         
-        
         try {
             mysqli_report(MYSQLI_REPORT_STRICT);
             $cnn = new mysqli(SRVDR,USR,PASS,DB);

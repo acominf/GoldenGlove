@@ -15,8 +15,8 @@
     </head>
     <body>
         <?php
-            include(__DIR__ . '/php/clases/usuario.php');/* agrega la clase usuario*/
-            include(__DIR__ . '/php/include/headerI.php') 
+            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
+            include(__DIR__ . '/php/include/headerI.php');
         ?>
         <div class="container">
             <div class="row">
@@ -24,7 +24,7 @@
                     <h1>Subir imagen</h1>
                 </div>
             </div>
-            <form class ="form-horizontal" method="POST" action="php/pagina/subirImagen.php">
+            <form class ="form-horizontal" method="POST" enctype="multipart/form-data" action="php/pagina/subeImagen.php">
                 <div class="form-row">
                     <div class="form-group">
                         <label class="control-label col-xs-1 col-sm-1 col-md-1 col-xl-1" for="Imagen:">
@@ -47,12 +47,14 @@
                         <input class="form-control" name="titulo" type="text" placeholder="Titulo de la imágen:">
                     </div>
                 </div>
-                <div class="form-group has-error">
-                    <label class="control-label col-xs-12 col-sm-1 col-md-1 col-lg-1" for="contenido">descripción:</label>
+                <!--
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-1 col-md-1 col-lg-1" for="descripcion">descripción:</label>
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-11 col-md-offset-0 col-lg-11">
-                        <textarea class="form-control" rows="10" name="contenido" placeholder="descripción de la imágen"></textarea>
+                        <textarea class="form-control" type="textarea" rows="10" name="descripcion" placeholder="descripción de la imágen"></textarea>
                     </div>
                 </div>
+                -->
                 <div class="form-group">
                     <div class="col-xs-2 col-sm-offset-6">
                         <button class="btn btn-success" type="submit">Subir</button>
