@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../conexion/Conexion.php';
+require_once('Imagen.php');
 require_once 'Contenido.php';
 
 class Pagina{
-	private $paginaId;
-	private $nombre;
-	private $contenidos;
+	public $paginaId;
+	public $nombre;
+	public $contenidos;
     
     
     public function __construct($paginaId){
@@ -32,6 +33,7 @@ class Pagina{
 			if($res->fetch()){
 				$this->paginaId = $paginaId;
 				$this->nombre = $nombre;
+				
 				$this->consultaContenido();
 			}
 			$res->free_result();
@@ -129,6 +131,24 @@ class Pagina{
         $db = null;
     }
 	
+	public function agregaImagen($imagen,$titulo,$contenido){
+		$band = 0;
+		
+		$img = new Imagen();
+	    try{
+	        if($img->inicializaParametros($imagen)){
+	            if($img->subeFoto($titulo,$contenido,$this->paginaId)){
+	            	$band = 1;
+	            }
+	        }
+	    }
+	    catch(Exception $ex){
+	        echo $ex->getMessage();
+	    }
+	    
+	    return $band;
+	}
+	
     /*
 	public function agregaCon($titulo,$contenido,$orden){
 		
@@ -161,4 +181,5 @@ class Pagina{
 		
 		return $this->contenidos;
 	}
+	
 }

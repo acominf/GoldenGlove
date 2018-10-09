@@ -15,6 +15,14 @@
     </head>
     <body>
         <?php
+            session_start();
+            include(__DIR__ . '/php/clases/Pagina.php');
+            
+            $pagina = $_SESSION['pagina'];
+            
+            if(!isset($pagina)){
+                header('location:index.php');
+            }
             include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include(__DIR__ . '/php/include/headerI.php');
         ?>
@@ -47,14 +55,14 @@
                         <input class="form-control" name="titulo" type="text" placeholder="Titulo de la imágen:">
                     </div>
                 </div>
-                <!--
+                
                 <div class="form-group">
                     <label class="control-label col-xs-12 col-sm-1 col-md-1 col-lg-1" for="descripcion">descripción:</label>
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-11 col-md-offset-0 col-lg-11">
-                        <textarea class="form-control" type="textarea" rows="10" name="descripcion" placeholder="descripción de la imágen"></textarea>
+                        <textarea class="form-control" rows="10" name="desc" placeholder="descripción de la imágen"></textarea>
                     </div>
                 </div>
-                -->
+                
                 <div class="form-group">
                     <div class="col-xs-2 col-sm-offset-6">
                         <button class="btn btn-success" type="submit">Subir</button>

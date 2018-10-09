@@ -29,28 +29,29 @@
         </script>
 		<header>
             <?php
+            require_once(__DIR__ . '/php/clases/Pagina.php');
             $paginaId = 4;
+            session_start();
+            $pagina = new Pagina($paginaId);
+            if(isset($_SESSION['pagina'])){
+                unset($_SESSION['pagina']);
+            }
+            $_SESSION['pagina'] = $pagina;
             include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
             ?>
         </header>
-        <div class="container-fluid cuerpo">
+        <div class="container cuerpo">
+            <form action='formImagen.php' >
+                <button style="margin-bottom:20px;" type="submit" class="btn btn-secondary <?php /*echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible';*/ ?>">
+                  Subir imagen
+                </button>
+            </form>
             <section class="row text-center text-lg-left">
                 <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
                     <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
                 </a>
-                <a class="d-block col-md-4 col-lg-3" href="imagenes/Sin%20nombre3.jpg" data-toggle="lightbox">
-                    <img class="img-fluid img-thumbnail" src="imagenes/Sin%20nombre3.jpg" alt="costales-golden-glove">
-                </a>
-                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
-                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
-                </a>
-                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
-                            <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
-                </a>
-                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
-                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
-                </a>
+                
                 <div class="col-md-4 col-lg-3">
                         <a class="d-block" href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox">
                             <img class="img-fluid img-thumbnail" src="https://unsplash.it/600.jpg?image=251">

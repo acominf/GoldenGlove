@@ -17,7 +17,8 @@
       <?php
             include_once(__DIR__ . '/php/clases/Pagina.php');
             include_once(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
-        session_start();    
+            
+            session_start();
         //include_once('modEliminaContenido.php');
             $usuario=null;
             $paginaId = 1;

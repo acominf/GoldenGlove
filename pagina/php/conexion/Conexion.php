@@ -142,9 +142,37 @@ class Database{
 		
 		return $regAct;
 	}
+	
+	public function subeImagen($linkImagen,$paginaId,$titulo,$descipcion){
+		$success = 0;
+		
+		if($this->conectado){
+			if($ins = $this->cnn->prepare('INSERT INTO contenidos(titulo,contenido,paginaId)VALUES(?,?,?)')){
+				if($ins->bind_param('ssi',$titulo,$descipcion,$paginaId)){
+					$success = $ins->execute();
+					if($success){
+						$contenidoId = $ins->insert_id;
+						if($ins= $this->cnn->prepare('INSERT INTO imagenes(link,contenidoId)VALUES(?,?);')){
+							$ins->bind_param('si',$linkImagen,$contenidoId);
+							$success = $ins->execute();
+							if($success){
+							}
+						}
+					}
+				}
+				$ins->close();
+			}
+			else{
+				echo 'error al preparar consulta';
+			}
+		}
+		
+		return $success;
+	}
 
 	function __destruct(){
 		$this->cnn->close();
         unset($this->cnn);
 	}
+	
 }

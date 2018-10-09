@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../conexion/Conexion.php';
 
 class Imagen{
     //Extensiones válidas
@@ -37,9 +38,7 @@ class Imagen{
         
         $this->verificaError($imagen,$imagen['error']);
         $this->verificaDimensiones($imagen);
-        echo 'este es el nombre de la imagen paasada por parameto : ' . $imagen['name'];
         $this->img = $imagen;
-        echo '<br>este es el nombre de la imagen de la clase : ' . $this->img['name'];
         $band = 1;
         
         return $band;
@@ -90,8 +89,31 @@ class Imagen{
         }
     }
     
-    public function subeFoto(){
-        return move_uploaded_file($this->img['tmp_name'], $this->destino . $this->img['name']);
+    public function subeFoto($titulo,$contenido,$paginaId){
+        $band = 0;
+        $ruta = $this->destino . $this->img['name'];
+        
+        if(move_uploaded_file($this->img['tmp_name'],$ruta)){
+            $band = $this->subeFotoBD($this->img['name'],$paginaId,$titulo,$contenido);
+        }
+        
+        return $band;
+    }
+    
+    private function subeFotoBD($linkImagen,$paginaId,$titulo,$descipcion){
+        $db;
+        $band = 0;
+        
+        try{
+            $db = new Database();
+            $band = $db->subeImagen($linkImagen,$paginaId,$titulo,$descipcion);
+             unset($db);
+        }
+        catch(Exception $ex){
+            echo $ex->getMessage;
+        }
+        
+        return $band;
     }
     
 }
