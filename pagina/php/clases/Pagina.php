@@ -3,12 +3,13 @@
 require_once __DIR__ . '/../conexion/Conexion.php';
 require_once('Imagen.php');
 require_once 'Contenido.php';
+require_once 'Imagen.php';
 
 class Pagina{
-	public $paginaId;
-	public $nombre;
-	public $contenidos;
-    
+	private $paginaId;
+	private $nombre;
+	private $contenidos;
+    private $imagenes;
     
     public function __construct($paginaId){
         $this->consultaPaginaXId($paginaId);
@@ -35,6 +36,7 @@ class Pagina{
 				$this->nombre = $nombre;
 				
 				$this->consultaContenido();
+				$this->consultaImagenes();
 			}
 			$res->free_result();
 			$res->close();
@@ -58,6 +60,7 @@ class Pagina{
 				$this->paginaId = $paginaId;
 				$this->nombre = $nombre;
 				$this->consultaContenido();
+				$this->consultaImagenes();
 			}
 			$res->free_result();
 			$res->close();
@@ -82,6 +85,23 @@ class Pagina{
 			$res->close();
 		}
 		$db = null;
+	}
+	
+	public function consultaImagenes(){
+		$res = null;
+		$db= new DataBase();
+		
+		$this->imagenes = array();
+		$res = $db->imagenesXPagina($this->paginaId);
+		$res->bind_result($imagenId,$nombre,$contenidoId,$titulo,$cont,$orden,$fecha);
+		
+		while($res->fetch()){
+			$contenido = new Contenido($contenidoId,$titulo,$cont,$this->paginaId,$orden,$fecha);
+			
+			$img  = new Imagen();
+			$img->inicializaImagen($nombre,$contenido);
+			$this->imagenes[] = $img;
+		}
 	}
     
     public function agregaContenido($titulo,$contenido){
@@ -182,4 +202,7 @@ class Pagina{
 		return $this->contenidos;
 	}
 	
+	public function getImagenes(){
+		return $this->imagenes;
+	}
 }

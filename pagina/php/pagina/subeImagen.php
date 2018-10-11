@@ -7,8 +7,9 @@ if(isset($imagen)){
         $pagina = $_SESSION['pagina'];
         $titulo = $_POST['titulo'];
         $contenido = $_POST['desc'];
+        
         if(!$pagina->agregaImagen($imagen,$titulo,$contenido)){
-            echo 'Error al subir imagen';
+            echo '<br>Error al subir imagen';
         }
         else{
             header('location:../../'. $pagina->getNombre() . '.php');

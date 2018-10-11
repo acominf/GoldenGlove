@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../conexion/Conexion.php';
+require_once 'Contenido.php';
 
 class Imagen{
     //Extensiones válidas
@@ -10,26 +11,36 @@ class Imagen{
     private $maxHeight;
     //peso máximo en bytes
     private $tam;
-    // A donde se va a subir
-    private $destino;
-    //imagen a subir
+    //imagen
     private $img;
-    //Extensión de la imagen
-    private $extension;
+    //Carpeta donde se encuentran las imagenes
+    private $carpeta;
+    //almacena el titulo y la descripcion
+    private $contenido;
+    //Nombe de la foto subida
+    private $nombre;
     
     public function __construct(){
     
     $this->extenValidas = array("image/jpg","image/jpeg","image/png","image/gif");
     $this->maxWidth = 1024;
     $this->maxHeight = 720;
-    $this->tam = 2000000;
-    $this->destino = __DIR__ .'/../../galeria/';
+    $this->tam = 20000000;
+    $this->carpeta = __DIR__ .'/../../galeria/';
     }
     
     public function __construct2($img){
+        
+        $this->__construct();
+        $this->inicializaParametros($img);
+    }
     
-    $this->__construct();
-    $this->inicializaParametros($img);
+    public function inicializaImagen($nombre,$contenido){
+        
+        $this->__construct();
+        $this->nombre = $nombre;
+        $this->contenido = $contenido;
+        
     }
     
     public function inicializaParametros($imagen){
@@ -45,9 +56,9 @@ class Imagen{
     }
     
     private function verificaError($img, $codigoError){
-        if(!$this->validaExtension($img)){ // Verifica que el archivo sea una imagen
-            throw new Exception(utf8_encode("Archivo no váido"),'90000');
-        }
+     /*   if(!$this->validaExtension($img)){ // Verifica que el archivo sea una imagen
+            throw new Exception(utf8_encode("Archivo no valido " . $img['type']),'90000' );
+        }*/
         if($img['size'] > $this->tam){ //Veriifica el tamaño en bytes de la imagen
             throw new Exception("El tamaño del archivo excede al permitido");
         }
@@ -91,7 +102,7 @@ class Imagen{
     
     public function subeFoto($titulo,$contenido,$paginaId){
         $band = 0;
-        $ruta = $this->destino . $this->img['name'];
+        $ruta = $this->carpeta . $this->img['name'];
         
         if(move_uploaded_file($this->img['tmp_name'],$ruta)){
             $band = $this->subeFotoBD($this->img['name'],$paginaId,$titulo,$contenido);
@@ -116,4 +127,17 @@ class Imagen{
         return $band;
     }
     
+    public function getRuta(){
+        return $this->nombre;
+    }
+    
+    public function getTitulo(){
+        
+        return $this->contenido->getTitulo();
+    }
+    
+    public function getDescripcion(){
+        
+        return $this->contenido->getContenido();
+    }
 }

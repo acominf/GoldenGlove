@@ -7,6 +7,11 @@ body {
     margin-bottom:25px;
 }
 
+/*
+.pencil{
+    fill:white;
+}
+*/
 .navbar{
     margin-bottom: 0px;
     border-bottom: 1px solid #c0924f;
@@ -22,6 +27,7 @@ color: #c1c2c6 !important;   /*Sets the text hover color on navbar*/
  a:hover, .pruebaNav .navbar-nav > .active > a:focus {
      color: #c1c2c6 !important;  /*BACKGROUND color for active*/
      background-color: #c0924f !important;
+     border-radius: 2px;
 }
 
 .h2 .pruebaNav .navbar-nav > li > a {
@@ -52,8 +58,15 @@ color: #c1c2c6 !important;   /*Sets the text hover color on navbar*/
 }
 
 /*Color del texto del dropdown que se encuentra en la barra de navegación*/
-.dropdown-menu 
-{
+.dropdown-menu , .asideTitle{
+    color: #c0924f;
+}
+
+.contenido{
+    padding-left: 5px;
+}
+
+.contenido > h2{
     color: #c0924f;
 }
 
@@ -97,12 +110,14 @@ p{
     color: 	#c1c2c6;
 }
 
-.aside {
+.aside {;
     margin-top:25px;
+    max-height: 400px;
+    overflow: auto;
 }
 
-.asideTitle{
-    color: #c0924f;
+.articulos{
+    border-left: 1px solid #c0924f;
 }
 
 .usuarios{

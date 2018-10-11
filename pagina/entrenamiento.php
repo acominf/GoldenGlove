@@ -50,21 +50,21 @@
                         <?php } ?>
                     </nav>
                 </aside>
-                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 articulos">
                     <?php 
                         foreach($pagina->getContenidos() as $contenido){ ?>
-                            <div class="row" id="E<?php echo $contenido->getContenidoId() ?>">
+                            <div class="row contenido" id="E<?php echo $contenido->getContenidoId(); ?>">
                                 <h2 class="col-10">
-                                    <?php echo $contenido->getTitulo() ?>  
+                                    <?php echo $contenido->getTitulo(); ?>  
                                 </h2>
-                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="actualizaCont(<?php echo $contenido->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
-                                    actualiza
-                                </button>
-                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $contenido->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
+                                <a class="<?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-target="#modalAgregaContenido" data-toggle="modal" href="" onclick="actualizaCont(<?php echo $contenido->getContenidoId(); ?>)">
+                                    <img src="iconos/svg/pencil.svg">
+                                </a>
+                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $contenido->getContenidoId(); ?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
                                     Eliminar
                                 </button>
                                 <p> 
-                                    <?php  echo nl2br($contenido->getContenido()) ?> 
+                                    <?php  echo nl2br($contenido->getContenido()); ?> 
                                 </p>
                             </div>
                         <?php 

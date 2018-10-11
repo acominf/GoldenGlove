@@ -169,6 +169,24 @@ class Database{
 		
 		return $success;
 	}
+	
+	public function imagenesXPagina($paginaId){
+		$res = null;
+		
+		if($this->conectado){
+			if($res= $this->cnn->prepare('SELECT I.imagenId,I.link,C.contenidoId,C.titulo,C.contenido,C.orden,C.fecha FROM imagenes AS I INNER JOIN contenidos AS C ON C.contenidoId = I.contenidoId WHERE paginaId = ?')){
+				if($res->bind_param('i',$paginaId)){
+						$res->execute();
+						$res->store_result();
+				}
+				else{
+					echo 'error al enviar parametros';
+				}
+			}
+		}
+		
+		return $res;
+	}
 
 	function __destruct(){
 		$this->cnn->close();

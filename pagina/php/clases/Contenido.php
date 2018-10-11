@@ -2,12 +2,12 @@
 require_once __DIR__ . '/../conexion/Conexion.php';
 
 class Contenido{
-	public $contenidoId;
-	public $titulo;
-	public $contenido;
-	public $orden;
-    public $paginaId;
-    public $fecha;
+	private $contenidoId;
+	private $titulo;
+	private $contenido;
+	private $orden;
+    private $paginaId;
+    private $fecha;
 
 	public function __construct($contenidoId,$titulo,$contenido,$paginaId,$orden, $fecha){
 		$this->contenidoId = $contenidoId;

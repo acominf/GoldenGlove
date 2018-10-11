@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-12 col-sm-1 col-md-1 col-xl-1" for="titulo">Titulo:</label>
                     <div class="col-xs-12 col-sm-11 col-md-11 col-xl-11">
-                        <input class="form-control" name="titulo" type="text" placeholder="Titulo de la imágen:">
+                        <input class="form-control" name="titulo" type="text" maxlenght="20" placeholder="Titulo de la imágen:">
                     </div>
                 </div>
                 

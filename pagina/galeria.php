@@ -30,34 +30,57 @@
 		<header>
             <?php
             require_once(__DIR__ . '/php/clases/Pagina.php');
+            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             $paginaId = 4;
             session_start();
+            $usuario = null;
+            if(isset($_SESSION['usuario'])){
+                $usuario = $_SESSION['usuario'];
+            }
             $pagina = new Pagina($paginaId);
             if(isset($_SESSION['pagina'])){
                 unset($_SESSION['pagina']);
             }
             $_SESSION['pagina'] = $pagina;
-            include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
             include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
+            $pagina->consultaImagenes();
             ?>
         </header>
         <div class="container cuerpo">
-            <form action='formImagen.php' >
+            <form class="<?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" action='formImagen.php' >
                 <button style="margin-bottom:20px;" type="submit" class="btn btn-secondary <?php /*echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible';*/ ?>">
                   Subir imagen
                 </button>
             </form>
-            <section class="row text-center text-lg-left">
-                <a class="d-block col-md-4 col-lg-3" href="imagenes/costales.jpg" data-toggle="lightbox">
-                    <img class="img-fluid img-thumbnail" src="imagenes/costales.jpg" alt="costales-golden-glove">
-                </a>
-                
+            
+            
+             <section class="card-columns">
+                <?php 
+                    foreach($pagina->getImagenes() as $imagen){ 
+                ?>
+                        <div class="card text-white bg-dark text-center">
+                            <a href="<?php echo 'galeria/'. $imagen->getRuta(); ?>" data-toggle="lightbox">
+                                <img class="img-fluid img-thumbnail card-img-top bg-dark" src="<?php echo 'galeria/'. $imagen->getRuta(); ?>" alt="costales-golden-glove">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <strong><?php echo $imagen->getTitulo(); ?></strong>
+                                </h6>
+                                <p class="card-text text-white">
+                                    <?php echo $imagen->getDescripcion(); ?>
+                                </p>
+                            </div>
+                        </div>
+               <?php } ?>
+            </section>
+                <!--
                 <div class="col-md-4 col-lg-3">
                         <a class="d-block" href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox">
                             <img class="img-fluid img-thumbnail" src="https://unsplash.it/600.jpg?image=251">
                         </a>
                 </div>
-            </section>
+                -->
+            
         </div>
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<script src="js/jquery.js"></script><!-- CÓDIGO DE BOOTSTRAP -->
@@ -66,10 +89,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
         
         <script>
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+                
         </script>
         
 	</body>
