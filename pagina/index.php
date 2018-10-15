@@ -7,6 +7,7 @@
 		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
         -->
         <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" sizes="196x196" href="imagenes/logo152.png">
 		<!-- CÓDIGO DE BOOTSTRAP --> 
         <link rel="stylesheet" href="css/bootstrap.css"> 
 		<link rel="stylesheet" href="css/general.css">
@@ -78,11 +79,11 @@
                     <?php
                          $i = ($numPag-1) * $cantContenidosXpag;
                         for($it = 0; $it < $cantContenidosXpag && $i < count($pagina->getContenidos()) ; $it++){ ?>
-                            <h2> 
-                                <a  href = "#E<?php echo $pagina->getContenidos()[$i]->getContenidoId();?>"> 
+                            <a  href = "#E<?php echo $pagina->getContenidos()[$i]->getContenidoId();?>"> 
+                                <h2> 
                                     <?php echo $pagina->getContenidos()[$i]->getTitulo(); ?> 
-                                </a>
-                            </h2>
+                                </h2>
+                            </a>
                             <?php $i++; ?> 
                         <?php } ?>
                     </nav>
@@ -91,8 +92,8 @@
                     <?php 
                         $i = ($numPag-1) * $cantContenidosXpag;
                         for($it = 0; $it < $cantContenidosXpag && $i < count($pagina->getContenidos()) ; $it++){ ?>
-                            <div class="contenido" id="E<?php echo $pagina->getContenidos()[$i]->getContenidoId(); ?>">
-                                <div class="row">
+                            <div id="E<?php echo $pagina->getContenidos()[$i]->getContenidoId(); ?>">
+                                <div class="row contenido">
                                     <h2 class="col-10">
                                         <?php echo $pagina->getContenidos()[$i]->getTitulo(); ?>  
                                     </h2>
@@ -104,17 +105,17 @@
                                         </svg>    
                                     </a> -->
                                     <a class="col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-target="#modalAgregaContenido" data-toggle="modal" href="" onclick="actualizaCont(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)">
-                                        <img src="iconos/svg/pencil.svg">
+                                        <img class="pencil" src="iconos/svg/pencil.svg">
                                     </a>
                                     <a class="col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-target="#modalEliminaContenido" data-toggle="modal" href="" onclick="eliminaContenido(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)">
-                                        <img src="iconos/svg/x.svg">
+                                        <img class="x" src="iconos/svg/x.svg">
                                     </a>
                                     <!--
                                     <button class="btn btn-secondary btn-sm col-1 <?php /*echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; */ ?>" type="button" onclick="actualizaCont(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalAgregaContenido" >
                                         edita
                                     </button>
                                     
-                                    <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $pagina->getContenidos()[$i]->getContenidoId() ?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
+                                    <button class="btn btn-secondary btn-sm col-1 <?php /*echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible';*/ ?>" type="button" onclick="eliminaContenido(<?php /* echo $pagina->getContenidos()[$i]->getContenidoId() */?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
                                         Eliminar
                                     </button>
                                     -->

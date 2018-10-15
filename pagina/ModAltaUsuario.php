@@ -158,7 +158,7 @@
                             <button class="btn btn-success" id="btnRegistrar" type="submit" name="usuarioId" value="">Registrar</button>
                         </div>
                         <div class="col-4">
-                            <div class="form-group">
+                            <div class="form-group" id="groupEsAdmin">
                                 <input name="esAdmin" type="checkbox" id="admin">
                                 <label for="admin">Es Administrador?</label>
                             </div>
@@ -169,3 +169,35 @@
         </div>
     </div>
 </div>
+
+<script>
+
+                //VERSIONES SOPORTADAS CHROME 13.0, EXPLORER 10.0, FIREFOX 4.0 SAFARI 6.0 OPERA 12.1
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+              'use strict';
+              window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                  form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+                
+                
+            function validaPsw() {
+                var x = document.getElementById("psw1").value;
+                var y = document.getElementById("psw2").value;
+                document.getElementById("btnRegistrar").disabled = !(y == x);
+            }    
+            
+</script>
+

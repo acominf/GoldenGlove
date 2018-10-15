@@ -7,6 +7,7 @@
 		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
         -->
         <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" sizes="196x196" href="imagenes/logo152.png">
 		<!-- CÓDIGO DE BOOTSTRAP --> 
         <link rel="stylesheet" href="css/bootstrap.css"> 
 		<link rel="stylesheet" href="css/general.css">
@@ -42,11 +43,11 @@
                     <nav>
                     <?php
                         foreach($pagina->getContenidos() as $contenido){ ?>
-                            <h2> 
-                                <a  href = "#E<?php echo $contenido->getContenidoId() ?> "> 
+                            <a  href = "#E<?php echo $contenido->getContenidoId(); ?>">
+                                <h2> 
                                     <?php echo $contenido->getTitulo() ?> 
-                                </a>
-                            </h2>
+                                </h2>
+                            </a>
                         <?php } ?>
                     </nav>
                 </aside>
@@ -60,9 +61,9 @@
                                 <a class="<?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-target="#modalAgregaContenido" data-toggle="modal" href="" onclick="actualizaCont(<?php echo $contenido->getContenidoId(); ?>)">
                                     <img src="iconos/svg/pencil.svg">
                                 </a>
-                                <button class="btn btn-secondary btn-sm col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" type="button" onclick="eliminaContenido(<?php echo $contenido->getContenidoId(); ?>)"  data-toggle="modal" data-target="#modalEliminaContenido" >
-                                    Eliminar
-                                </button>
+                                <a class="col-1 <?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" data-target="#modalEliminaContenido" data-toggle="modal" href="" onclick="eliminaContenido(<?php echo $contenido->getContenidoId(); ?>)">
+                                    <img src="iconos/svg/x.svg">
+                                </a>
                                 <p> 
                                     <?php  echo nl2br($contenido->getContenido()); ?> 
                                 </p>

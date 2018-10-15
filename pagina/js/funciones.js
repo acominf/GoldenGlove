@@ -8,13 +8,13 @@ function actualizaCont(contenidoId) {
     document.getElementById("modalButton").innerHTML = "Actualizar";
     document.getElementById("modalButton").value = contenidoId;
     formTitulo.value = contenido.getElementsByTagName("h2")[0].innerHTML.trim();
-    formContenido.value = contenido.getElementsByTagName("p")[0].innerHTML.trim().replace(/<br\s*\/?>/mg,"\n");;
+    formContenido.value = contenido.getElementsByTagName("p")[0].innerHTML.trim().replace(/<br\s*\/?>/mg,"\n");
 }
 
 function agregaCont() {
     document.getElementById("tituloModal").innerHTML = "Agregar contenido";
     document.getElementById("modalButton").innerHTML = "Publicar";
-    document.getElementById("modalButton").value = contenidoId;
+    //document.getElementById("modalButton").value = contenidoId;
     document.getElementById("titulo").value = "";
     document.getElementById("contenido").value = "";
     document.getElementById("formContenido").action = "php/pagina/agregaContenido.php";
@@ -25,6 +25,7 @@ function eliminaContenido(contenidoId){
 }
 
 function altaUsuario() {
+    document.getElementById("groupEsAdmin").style.display = 'none';
     document.getElementById("datosSesion").style.display = 'block';
     document.getElementById("nombre").value = "";
     document.getElementById("apellidoP").value = "";
@@ -41,19 +42,26 @@ function altaUsuario() {
     document.getElementById("formUsuario").action = "php/pagina/validaUsuario.php";
     document.getElementById("btnRegistrar").innerHTML = "Registrar";
     document.getElementById("btnRegistrar").value = "";
+    document.getElementById("admin").checked = false;
+    document.getElementById("usr").required = true;
+    document.getElementById("psw1").required = true;
+    document.getElementById("psw2").required = true;
 }
 
 function editaUsuario(usuarioId) {
-    var nombre = document.getElementById("nombreU").value.split("+");
-    var sexo = document.getElementById("sexo").innerHTML.trim();
-    var mail = document.getElementById("mailU").innerHTML;
-    var calle = document.getElementById("dirU").innerHTML.split("#");
-    var cp = document.getElementById("cpU").innerHTML;
-    var col = document.getElementById("coloniaU").innerHTML;
-    var estado = document.getElementById("estadoU").innerHTML;
-    var tel = document.getElementById("telU").innerHTML;
-    var fechaIng = document.getElementById("fechaIngresoU").innerHTML;
     
+    var nombre = document.getElementById("nombreU" + usuarioId).value.split("+");
+    var sexo = document.getElementById("sexo" + usuarioId).innerHTML.trim();
+    var mail = document.getElementById("mailU" + usuarioId).innerHTML;
+    var calle = document.getElementById("dirU" + usuarioId).innerHTML.split("#");
+    var cp = document.getElementById("cpU" + usuarioId).innerHTML;
+    var col = document.getElementById("coloniaU" + usuarioId).innerHTML;
+    var estado = document.getElementById("estadoU" + usuarioId).innerHTML;
+    var tel = document.getElementById("telU" + usuarioId).innerHTML;
+    var fechaIng = document.getElementById("fechaIngresoU" + usuarioId).innerHTML;
+    var esAdmin = document.getElementById("esAdmin" + usuarioId).getAttribute("data-admin");
+    
+    document.getElementById("groupEsAdmin").style.display = 'inline-block';
     document.getElementById("datosSesion").style.display = 'none';
     document.getElementById("nombre").value = nombre[0];
     document.getElementById("apellidoP").value = nombre[1];
@@ -70,5 +78,9 @@ function editaUsuario(usuarioId) {
     document.getElementById("tituloModal").innerHTML = "Editar usuario";
     document.getElementById("formUsuario").action = "php/pagina/actualizaUsuario.php";
     document.getElementById("btnRegistrar").innerHTML = "Actualizar";
+    document.getElementById("admin").checked = esAdmin == 1 ? true : false;
     document.getElementById("btnRegistrar").value = usuarioId;
+    document.getElementById("usr").required = false;
+    document.getElementById("psw1").required = false;
+    document.getElementById("psw2").required = false;
 }

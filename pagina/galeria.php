@@ -7,6 +7,7 @@
 		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
         -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <link rel="icon" type="image/png" sizes="196x196" href="imagenes/logo152.png">
 		<!-- CÓDIGO DE BOOTSTRAP -->
 		<link rel="stylesheet" href="css/bootstrap.min.css"> 
 		<link rel="stylesheet" href="css/general.css">
@@ -14,20 +15,6 @@
 		<title>Golden Glove</title>
 	</head>
 	<body>
-        <div id="fb-root">
-        </div>
-        <script>
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id))
-                  return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.8";
-              fjs.parentNode.insertBefore(js, fjs);
-            }
-             (document, 'script', 'facebook-jssdk'));
-        </script>
-		<header>
             <?php
             require_once(__DIR__ . '/php/clases/Pagina.php');
             include(__DIR__ . '/php/clases/Usuario.php');/* agrega la clase usuario*/
@@ -45,7 +32,6 @@
             include(__DIR__ . '/php/include/headerI.php');/* agrega el menu*/
             $pagina->consultaImagenes();
             ?>
-        </header>
         <div class="container cuerpo">
             <form class="<?php echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible'; ?>" action='formImagen.php' >
                 <button style="margin-bottom:20px;" type="submit" class="btn btn-secondary <?php /*echo ($usuario != null and $usuario->esAdmin()) == 1 ? '': 'invisible';*/ ?>">
@@ -58,9 +44,9 @@
                 <?php 
                     foreach($pagina->getImagenes() as $imagen){ 
                 ?>
-                        <div class="card text-white bg-dark text-center">
+                        <div class="card card-Img text-white bg-dark text-center">
                             <a href="<?php echo 'galeria/'. $imagen->getRuta(); ?>" data-toggle="lightbox">
-                                <img class="img-fluid img-thumbnail card-img-top bg-dark" src="<?php echo 'galeria/'. $imagen->getRuta(); ?>" alt="costales-golden-glove">
+                                <img class="img-fluid img-thumbnail card-img-top bg-dark" src="<?php echo 'galeria/'. $imagen->getRuta(); ?>" alt="<?php echo $imagen->getTitulo();?>">
                             </a>
                             <div class="card-body">
                                 <h6 class="card-title">

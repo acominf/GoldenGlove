@@ -7,6 +7,7 @@
 		<meta name="viewport" content ="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> 
         -->
         <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" sizes="196x196" href="imagenes/logo152.png">
 		<!-- CÓDIGO DE BOOTSTRAP --> 
         <link rel="stylesheet" href="css/bootstrap.css"> 
 		<link rel="stylesheet" href="css/general.css">
@@ -36,55 +37,55 @@
                         }
                         if($res = $cnn->query('SELECT U.*,TU.tipoUsuario FROM usuario AS U INNER JOIN tipousuario AS TU on TU.tipoUsuarioId = U.tipoUsuarioId')){
                             while($fila = $res->fetch_assoc()){ ?>
-                            <div class="accordion" id="usuario<?php echo $fila['usuarioId'];?>">
+                            <div class="accordion" id="U<?php echo $fila['usuarioId'];?>">
                               <div style="border: 1px solid #c0924f; margin:25px;">
                                 <div style="border-bottom: 1px solid #c0924f;color:white;">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $fila['usuarioId']?>" aria-expanded="true" aria-controls="collapseOne" id="nombreU" value ="<?php  echo $fila['nombre'] . '+' . $fila['apellidoPat'] . '+' . $fila['apellidoMat']; ?>">
+                                    <button class="btn btn-link" id="nombreU<?php echo $fila['usuarioId'];?>" type="button" data-toggle="collapse" data-target="#collapse<?php echo $fila['usuarioId'];?>" aria-expanded="true" aria-controls="collapseOne" value ="<?php  echo $fila['nombre'] . '+' . $fila['apellidoPat'] . '+' . $fila['apellidoMat']; ?>">
                                      <strong> 
-                                        <?php  echo $fila['nombre'] . ' ' . $fila['apellidoPat'] . ' ' . $fila['apellidoMat']; ?>
+                                        <?php  echo $fila['nombre'] . ' ' . $fila['apellidoPat'] . ' ' . $fila['apellidoMat'];?>
                                      </strong>
                                     </button>
-                                    <button class="btn btn-secondary" type="button" onclick="editaUsuario(<?php echo  $fila['usuarioId']; ?>)" data-toggle="modal" data-target="#modalAltaUsuario" >
-                                        Editar
-                                    </button>
+                                    <a  data-target="#modalAltaUsuario" data-toggle="modal" href="" onclick="editaUsuario(<?php echo  $fila['usuarioId'];?>)">
+                                        <img class="pencil" src="iconos/svg/pencil.svg">
+                                    </a>
                                     <div class="row">
                                        <div class="col-md-5">
                                             <label>Usuario:</label>
-                                            <p id="usuarioU">
+                                            <p id="usuarioU<?php echo $fila['usuarioId'];?>">
                                                 <?php echo $fila['usuario']; ?> 
                                             </p>
                                         </div>
                                         <div class="col-md-3">
                                             <label>Fecha Ingreso:</label>
-                                            <p id="fechaIngresoU">
+                                            <p id="fechaIngresoU<?php echo $fila['usuarioId'];?>">
                                                 <?php echo $fila['fechaIng']; ?>
                                             </p>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Sexo:</label>
-                                            <p id="sexo">
+                                            <p id="sexo<?php echo $fila['usuarioId'];?>">
                                                 <?php echo $fila['sexo'];?>
                                             </p>
                                         </div>
                                         <div class="col-md-2">
                                             <label>tipoUsuario:</label>
-                                            <p id="esAdmin" value = <?php echo $fila['tipoUsuarioId'];?> >
+                                            <p id="esAdmin<?php echo $fila['usuarioId'];?>" data-admin = <?php echo $fila['tipoUsuarioId'];?> >
                                                 <?php echo $fila['tipoUsuario'];?>
                                             </p>
                                     </div>
                                 </div>
 
-                                <div style="color:white;" id="collapse<?php echo $fila['usuarioId']?>" class="collapse" aria-labelledby="headingOne" data-parent="#usuario<?php echo $fila['usuarioId'];?>">
+                                <div style="color:white;" id="collapse<?php echo $fila['usuarioId']?>" class="collapse" aria-labelledby="headingOne" data-parent="#U<?php echo $fila['usuarioId'];?>">
                                   <div class="card-body row">
                                     <div class="col-12 col-md-3">
                                        <label>Calle:</label>
-                                        <p id="dirU">
+                                        <p id="dirU<?php echo $fila['usuarioId'];?>">
                                             <?php echo $fila['calle'] . ' #' . $fila['numeroInt']; ?>
                                         </p>
                                     </div>
                                     <div class="col-12 col-md-3">
                                        <label>Colonia:</label>
-                                       <p id="coloniaU">
+                                       <p id="coloniaU<?php echo $fila['usuarioId'];?>">
                                         <?php echo $fila['colonia']; ?>
                                         </p>
                                     </div>
@@ -92,7 +93,7 @@
                                        <label>
                                             C.P:
                                        </label>
-                                        <p  id="cpU">
+                                        <p  id="cpU<?php echo $fila['usuarioId'];?>">
                                             <?php echo $fila['cp']; ?>
                                         </p>
                                     </div>
@@ -100,7 +101,7 @@
                                        <label>
                                             Estado:
                                        </label>
-                                       <p id="estadoU">
+                                       <p id="estadoU<?php echo $fila['usuarioId'];?>">
                                             <?php echo $fila['estado']; ?>
                                         </p>
                                     </div>
@@ -108,7 +109,7 @@
                                        <label>
                                             Teléfono:
                                         </label>
-                                        <p id="telU">
+                                        <p id="telU<?php echo $fila['usuarioId'];?>">
                                             <?php echo $fila['telefono']; ?>
                                         </p>
                                     </div>
@@ -116,7 +117,7 @@
                                        <label>
                                             Mail:
                                         </label>
-                                        <p id="mailU">
+                                        <p id="mailU<?php echo $fila['usuarioId'];?>">
                                             <?php echo $fila['mail']; ?>
                                         </p>
                                     </div>

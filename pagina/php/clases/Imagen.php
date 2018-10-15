@@ -22,7 +22,7 @@ class Imagen{
     
     public function __construct(){
     
-    $this->extenValidas = array("image/jpg","image/jpeg","image/png","image/gif");
+    $this->extenValidas = array("image/jpg","image/jpeg","image/png","image/gif","image/bmp");
     $this->maxWidth = 1024;
     $this->maxHeight = 720;
     $this->tam = 20000000;
@@ -56,9 +56,9 @@ class Imagen{
     }
     
     private function verificaError($img, $codigoError){
-     /*   if(!$this->validaExtension($img)){ // Verifica que el archivo sea una imagen
+        if(!$this->validaExtension($img)){ // Verifica que el archivo sea una imagen
             throw new Exception(utf8_encode("Archivo no valido " . $img['type']),'90000' );
-        }*/
+        }
         if($img['size'] > $this->tam){ //Veriifica el tamaño en bytes de la imagen
             throw new Exception("El tamaño del archivo excede al permitido");
         }

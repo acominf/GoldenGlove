@@ -7,7 +7,6 @@ if(isset($imagen)){
         $pagina = $_SESSION['pagina'];
         $titulo = $_POST['titulo'];
         $contenido = $_POST['desc'];
-        
         if(!$pagina->agregaImagen($imagen,$titulo,$contenido)){
             echo '<br>Error al subir imagen';
         }

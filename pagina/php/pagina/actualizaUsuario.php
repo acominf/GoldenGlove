@@ -62,7 +62,7 @@ else{
                     $inserta->close();
                 }
                 else{
-                    echo 'Se insertó el nuevo usuario';
+                    header("location:../../usuarios.php");
                 }
             }
         }
